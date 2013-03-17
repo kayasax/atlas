@@ -21,8 +21,8 @@
 	<?php echo CHtml::encode($data->content); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('creator')); ?>:</b>
-	<?php echo CHtml::encode($data->creator); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('author')); ?>:</b>
+	<?php echo CHtml::encode($data->author); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('creation')); ?>:</b>

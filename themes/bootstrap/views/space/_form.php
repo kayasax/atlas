@@ -15,10 +15,11 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
+
 	<!-- <div class="row">
-		<?php echo $form->labelEx($model,'idespace'); ?>
-		<?php echo $form->textField($model,'idespace'); ?>
-		<?php echo $form->error($model,'idespace'); ?>
+		<?php echo $form->labelEx($model,'idspace'); ?>
+		<?php echo $form->textField($model,'idspace'); ?>
+		<?php echo $form->error($model,'idspace'); ?>
 	</div> -->
 
 	<div class="row">
@@ -28,26 +29,23 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'description'); ?>
+		<?php echo $form->labelEx($model,'description'); ?> 
 		<?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'description'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->hiddenField($model,'creation',array('value'=>'now()' )); ?>
+		<?php echo $form->labelEx($model,'parent'); ?> 
+		<?php echo $form->dropDownList($model,'parent',$parents); ?>
+		<?php echo $form->error($model,'description'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'creator'); ?>
-		<?php echo $form->textField($model,'creator',array('size'=>13,'maxlength'=>13)); ?>
-		<?php echo $form->error($model,'creator'); ?>
-	</div>
+	<!-- <div class="row">
+		<?php echo $form->labelEx($model,'status'); ?>
+		<?php echo $form->textField($model,'status',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->error($model,'status'); ?>
+	</div> -->
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'startpage'); ?>
-		<?php echo $form->textField($model,'startpage',array('size'=>60,'maxlength'=>100)); ?>
-		<?php echo $form->error($model,'startpage'); ?>
-	</div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

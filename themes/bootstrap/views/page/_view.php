@@ -3,7 +3,7 @@
 /* @var $data Page */
 ?>
 
-<div class="view">
+<div class="view well">
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('idpage')); ?>:</b>
 	<?php echo CHtml::link(CHtml::encode($data->idpage), array('view', 'id'=>$data->idpage)); ?>
@@ -21,17 +21,11 @@
 	<?php echo CHtml::encode($data->content); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('creator')); ?>:</b>
-	<?php echo CHtml::encode($data->creator); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('author')); ?>:</b>
+	<?php echo CHtml::encode($data->author); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('creation')); ?>:</b>
-	<?php echo CHtml::encode($data->creation); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('last_modification')); ?>:</b>
-	<?php echo CHtml::encode($data->last_modification); ?>
-	<br />
+	<!--  -->
 
 	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('modified_by')); ?>:</b>

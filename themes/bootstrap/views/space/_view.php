@@ -6,28 +6,23 @@
 
 <div class="view well">
 
-	<!-- <b><?php echo CHtml::encode($data->getAttributeLabel('idespace')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->idespace), array('view', 'id'=>$data->idespace)); ?>
-	<br /> -->
-
+	
 	<!-- <?php echo CHtml::encode($data->getAttributeLabel('name')); ?> -->
-	<h2> <?php echo CHtml::link(CHtml::encode($data->name),array('view','id'=>$data->idespace)); ?> </h2>
+	<h2> <?php echo CHtml::link(CHtml::encode($data->name),array('view','id'=>$data->idspace)); ?> </h2>
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('description')); ?> : </b>
 	<?php echo nl2br(CHtml::encode($data->description)); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('creation')); ?> : </b>
-	<?php echo CHtml::encode($data->creation); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('creationdate')); ?> : </b>
+	<?php echo CHtml::encode($data->creationdate); ?>
 	<br />
 
 	<b>Créé par : </b>
-	<?php echo CHtml::encode($data->creator); ?>
+	<?php echo CHtml::encode($data->createdby); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('startpage')); ?> : </b>
-	<?php echo CHtml::encode($data->startpage); ?>
-	<br />
+	
 
 
 </div>

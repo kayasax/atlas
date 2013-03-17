@@ -5,17 +5,22 @@
  *
  * The followings are the available columns in table 'page':
  * @property integer $idpage
+ * @property integer $space
  * @property string $title
  * @property string $intro
  * @property string $content
- * @property integer $creator
- * @property string $creation
- * @property string $last_modification
- * @property integer $modified_by
+ * @property integer $author
+ * @property string $creationdate
+ * @property string $lasttouched
+ * @property integer $status
+ * @property string $tags
+ * @property string $version
  *
  * The followings are the available model relations:
- * @property Userprofile $creator0
- * @property Version $version
+ * @property Empathy $empathy
+ * @property Space $space0
+ * @property User $author0
+ * @property Revision $revision
  */
 class Page extends CActiveRecord
 {
@@ -45,13 +50,15 @@ class Page extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('creator', 'required'),
-			array('creator, modified_by', 'numerical', 'integerOnly'=>true),
+			array('space,title','required'),
+			array('space, status', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>100),
-			array('intro, content, creation, last_modification', 'safe'),
+			array('tags', 'length', 'max'=>300),
+			array('version', 'length', 'max'=>5),
+			array('intro, content, creationdate, lasttouched', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('idpage, title, intro, content, creator, creation, last_modification, modified_by', 'safe', 'on'=>'search'),
+			array('idpage, space, title, intro, content, author, creationdate, lasttouched, status, tags, version', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,8 +70,10 @@ class Page extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'creator0' => array(self::BELONGS_TO, 'Userprofile', 'creator'),
-			'version' => array(self::HAS_ONE, 'Version', 'idpage'),
+			'empathy' => array(self::HAS_ONE, 'Empathy', 'page'),
+			'space0' => array(self::BELONGS_TO, 'Space', 'space'),
+			'author0' => array(self::BELONGS_TO, 'User', 'author'),
+			'revision' => array(self::HAS_ONE, 'Revision', 'idpage'),
 		);
 	}
 
@@ -75,13 +84,16 @@ class Page extends CActiveRecord
 	{
 		return array(
 			'idpage' => 'Idpage',
+			'space' => 'Espace parent',
 			'title' => 'Titre',
 			'intro' => 'Intro',
 			'content' => 'Contenu',
-			'creator' => 'Créé par',
-			'creation' => 'Date création',
-			'last_modification' => 'Dernière modification',
-			'modified_by' => 'Modifié par',
+			'author' => 'Auteur',
+			'creationdate' => 'Créée',
+			'lasttouched' => 'Modifiée',
+			'status' => 'Statut',
+			'tags' => 'Tags',
+			'version' => 'Version',
 		);
 	}
 
@@ -97,30 +109,37 @@ class Page extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('idpage',$this->idpage);
+		$criteria->compare('space',$this->space);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('intro',$this->intro,true);
 		$criteria->compare('content',$this->content,true);
-		$criteria->compare('creator',$this->creator);
-		$criteria->compare('creation',$this->creation,true);
-		$criteria->compare('last_modification',$this->last_modification,true);
-		$criteria->compare('modified_by',$this->modified_by);
+		$criteria->compare('author',$this->author);
+		$criteria->compare('creationdate',$this->creationdate,true);
+		$criteria->compare('lasttouched',$this->lasttouched,true);
+		$criteria->compare('status',$this->status);
+		$criteria->compare('tags',$this->tags,true);
+		$criteria->compare('version',$this->version,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
 	
-	/**
-	 * Automatic date modification
-	 * @return multitype:multitype:string NULL
-	 */
-	public function behaviors(){
-		return array(
-				'CTimestampBehavior' => array(
-						'class' => 'zii.behaviors.CTimestampBehavior',
-						'createAttribute' => 'creation',
-						'updateAttribute' => 'last_modification',
-				)
-		);
+	protected function beforeSave(){
+	    if(parent::beforeSave())
+	    {
+	        if($this->isNewRecord)
+	        {
+	            $this->creationdate=new CDbExpression('NOW()');
+	            $this->lasttouched=new CDbExpression('NOW()');
+	            //$this->createdby=Yii::app()->user->id;
+	            $this->author=1;
+	        }
+	        else
+	            $this->lasttouched=time();
+	        return true;
+	    }
+	    else
+	        return false;
 	}
 }

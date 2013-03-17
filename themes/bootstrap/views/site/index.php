@@ -9,7 +9,7 @@ $this->pageTitle=Yii::app()->name;
 		<div class='row'>
 			<div class='span2'><?php echo CHtml::image(Yii::app()->request->baseUrl."/images/logo.jpg","logo Atlas"); ?></div>
 			<div class='span7 offset2'>
-				<h1>Bienvenue sur <? echo CHtml::encode(Yii::app()->name);?>,</h1>
+				<h1>Bienvenue sur <?php echo CHtml::encode(Yii::app()->name);?>,</h1>
 				<p>le support de notre connaissance</p>
 
 				<div class='row'>

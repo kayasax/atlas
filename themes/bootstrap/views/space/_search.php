@@ -11,11 +11,7 @@
 	'method'=>'get',
 )); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'idespace'); ?>
-		<?php echo $form->textField($model,'idespace'); ?>
-	</div>
-
+	
 	<div class="row">
 		<?php echo $form->label($model,'name'); ?>
 		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>100)); ?>
@@ -27,18 +23,13 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'creation'); ?>
-		<?php echo $form->textField($model,'creation'); ?>
+		<?php echo $form->label($model,'creationdate'); ?>
+		<?php echo $form->textField($model,'creationdate'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'creator'); ?>
-		<?php echo $form->textField($model,'creator'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'startpage'); ?>
-		<?php echo $form->textField($model,'startpage',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->label($model,'Créé par'); ?>
+		<?php echo $form->textField($model,'createdby'); ?>
 	</div>
 
 	<div class="row buttons">

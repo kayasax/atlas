@@ -28,7 +28,7 @@ class SpaceController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view',"test"),
+				'actions'=>array('index','view'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -45,6 +45,7 @@ class SpaceController extends Controller
 		);
 	}
 
+	
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
@@ -64,6 +65,8 @@ class SpaceController extends Controller
 	{
 		$model=new Space;
 
+		
+			
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -71,13 +74,15 @@ class SpaceController extends Controller
 		{
 			$model->attributes=$_POST['Space'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->idespace));
+				$this->redirect(array('view','id'=>$model->idspace));
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+			'model'=>$model,'parents'=>Space::getParents()
 		));
 	}
+
+	
 
 	/**
 	 * Updates a particular model.
@@ -95,11 +100,12 @@ class SpaceController extends Controller
 		{
 			$model->attributes=$_POST['Space'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->idespace));
+				$this->redirect(array('view','id'=>$model->idspace));
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
+			'parents'=>Space::getParents(),
 		));
 	}
 
@@ -152,7 +158,7 @@ class SpaceController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Space::model()->with('creator0')->findByPk($id);
+		$model=Space::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -171,18 +177,5 @@ class SpaceController extends Controller
 		}
 	}
 
-	public function actionTest($id)
-	{
-		
-		$ln=Space::model()->findByPk(1);
-		$dataProvider=new CActiveDataProvider('Space');
-
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-			'lastname'=>$ln->creator0->lastname,
-		));
-
-
-	}
 
 }
