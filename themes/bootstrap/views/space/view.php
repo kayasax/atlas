@@ -28,7 +28,10 @@ $this->menu=array(
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$pages,
+
 	'attributes'=>array(
+	/*'attributes'=>array(
+
 		'title',             // title attribute (in plain text)
 		//'content:html',  // description attribute in HTML
 	/*			array(               // related city displayed as a link
@@ -36,5 +39,9 @@ $this->menu=array(
 						'type'=>'raw',
 						'value'=>CHtml::link(CHtml::encode($model->city->name),
 								array('city/view','id'=>$model->city->id)),*/
+
 				),
+
+				//),
+
 )); ?>
