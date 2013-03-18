@@ -16,14 +16,25 @@ $this->menu=array(
 );
 ?>
 
-<h1><?php echo $model->name; ?></h1>
-<h2><?php echo $model->description;?></h2>
 
+<?php echo CVarDumper::dump($pages,20);?>
+
+<div class='well'>
+<h1><?php echo $model->name; ?> <small><?php echo $model->description;?></small></h1>
+</div>
 
 <?php echo Yii::app()->user->name; //echo $model->creator->lastname; ?>
 <?php //CVarDumper::dump($model,20,true);?>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	
+	'data'=>$pages,
+	'attributes'=>array(
+		'title',             // title attribute (in plain text)
+		//'content:html',  // description attribute in HTML
+	/*			array(               // related city displayed as a link
+						'label'=>'City',
+						'type'=>'raw',
+						'value'=>CHtml::link(CHtml::encode($model->city->name),
+								array('city/view','id'=>$model->city->id)),*/
+				),
 )); ?>

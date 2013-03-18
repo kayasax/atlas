@@ -52,8 +52,22 @@ class SpaceController extends Controller
 	 */
 	public function actionView($id)
 	{
+			
+		$dataProvider=new CActiveDataProvider('Space', array(
+				'criteria'=>array(
+						'order'=>'creationdate DESC',
+						'with'=>array('pages'),
+				),
+				'pagination'=>array(
+						'pageSize'=>10,
+				),
+		));
+		
+		
+		
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+			'pages'=>$dataProvider,
 		));
 	}
 
@@ -76,6 +90,7 @@ class SpaceController extends Controller
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->idspace));
 		}
+		$model->unsetAttributes();
 
 		$this->render('create',array(
 			'model'=>$model,'parents'=>Space::getParents()
@@ -128,7 +143,10 @@ class SpaceController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Space');
+		$dataProvider=new CActiveDataProvider('Space',array(
+        'pagination'=>array(
+                'pageSize'=>5,
+        ),));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));

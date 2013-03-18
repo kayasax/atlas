@@ -11,11 +11,7 @@
 	'method'=>'get',
 )); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'idpage'); ?>
-		<?php echo $form->textField($model,'idpage'); ?>
-	</div>
-
+	
 	<div class="row">
 		<?php echo $form->label($model,'title'); ?>
 		<?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>100)); ?>
@@ -32,24 +28,21 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'creator'); ?>
-		<?php echo $form->textField($model,'creator'); ?>
+		<?php echo $form->label($model,'author'); ?>
+		<?php echo $form->textField($model,'author'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'creation'); ?>
-		<?php echo $form->textField($model,'creation'); ?>
+		<?php echo $form->label($model,'creationdate'); ?>
+		<?php echo $form->textField($model,'creationdate'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'last_modification'); ?>
-		<?php echo $form->textField($model,'last_modification'); ?>
+		<?php echo $form->label($model,'lasttouched'); ?>
+		<?php echo $form->textField($model,'lasttouched'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'modified_by'); ?>
-		<?php echo $form->textField($model,'modified_by'); ?>
-	</div>
+	
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>

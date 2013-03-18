@@ -3,7 +3,7 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Spaces',
+	'Espaces',
 );
 
 $this->menu=array(
@@ -14,12 +14,16 @@ $this->menu=array(
 
 <h1>Liste des espaces</h1>
 
-<?php $this->widget('zii.widgets.CListView', array(
+
+
+<?php 
+
+$this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
 	'sortableAttributes'=>array(
 		'name',
-		'creation'
+		'creationdate'
 	),
 	
 )); ?>

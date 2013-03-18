@@ -27,7 +27,8 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 <?php echo $form->errorSummary($model); ?>
 
 <?php echo $form->labelEx($model,'space'); ?>
-<?php echo $form->dropDownList($model, 'space',Space::getParents()); ?>
+<?php echo $form->dropDownList($model, 'space',Space::getParents(), array('options' => array(Yii::app()->request->getParam('idspace')=>array('selected'=>true) ))); ?>
+
 <?php echo $form->textFieldRow($model, 'title', array('class'=>'span8','maxlength'=>100)); ?>
  
 <?php echo $form->labelEx($model,'intro'); ?>
@@ -36,13 +37,33 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 
 <div class="tinymce">
 <?php echo $form->labelEx($model,'content'); ?><br />
-<?php $this->widget('application.extensions.tinymce.ETinyMce',
+<?php
+
+$this->widget('ext.tinymce.TinyMce', array(
+    'model' => $model,
+    'attribute' => 'content',
+    // Optional config
+    'compressorRoute' => 'tinyMce/compressor',
+    //'spellcheckerUrl' => array('tinyMce/spellchecker'),
+    // or use yandex spell: http://api.yandex.ru/speller/doc/dg/tasks/how-to-spellcheck-tinymce.xml
+    //'spellcheckerUrl' => 'http://speller.yandex.net/services/tinyspell',
+    'fileManager' => array(
+        'class' => 'ext.elFinder.TinyMceElFinder',
+        'connectorRoute'=>'elfinder/connector',
+    ),
+    'htmlOptions' => array(
+        'rows' => 6,
+        'cols' => 60,
+    ),
+));
+
+/* $this->widget('application.extensions.tinymce.TinyMce',
     array(
         'model'=>$model,
         'attribute'=>'content',
         'editorTemplate'=>'full',
         'htmlOptions'=>array('rows'=>6, 'cols'=>50, 'class'=>'tinymce'),
-)); ?>
+));*/ ?>
 <?php echo $form->error($model,'content'); ?>
 </div>
 
