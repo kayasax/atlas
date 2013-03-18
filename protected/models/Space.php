@@ -86,10 +86,10 @@ class Space extends CActiveRecord
 			'name' => 'Nom',
 			'parent' => 'Parent',
 			'description' => 'Description',
-			/*'createdby' => 'Createdby',
-			'creationdate' => 'Creationdate',
-			'lasttouched' => 'Lasttouched',
-			'status' => 'Status',*/
+			'createdby' => 'Créé par',
+			'creationdate' => 'Date de création',
+			'lasttouched' => 'Dernière modification',
+			'status' => 'Status',
 		);
 	}
 

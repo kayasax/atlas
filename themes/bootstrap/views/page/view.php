@@ -16,9 +16,17 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Page #<?php echo $model->idpage; ?></h1>
+<div class='well'>
+<h2><?php echo $model->title; ?><small> - crée le  <?php echo $model->creationdate;?> par <?php echo $model->author;?></small></h2>
+<h4><?php echo $model->intro; ?></h4>
+</div>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
+<div class='well'>
+<?php echo $model->content; ?>
+</div>
+
+
+<?php /*$this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'idpage',
@@ -30,4 +38,4 @@ $this->menu=array(
 		'last_modification',
 		'modified_by',
 	),
-)); ?>
+)); */?>
