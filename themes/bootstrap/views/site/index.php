@@ -26,3 +26,22 @@ $this->pageTitle=Yii::app()->name;
 <p>Le site est constitué sous forme de wiki ou chaqun peut (est encouragé même) modifier le contenu des pages et ainsi maintenir une documentation <strong>la plus à jour possible</strong></p>
 <p><?php echo CHtml::link('Les espaces',CHtml::normalizeUrl(array('space/index'))) ;?> permettent d'orgnaiser le contenu par thème</p>
 
+<div class='row'>
+
+<div class='span6'>
+	<div class='widget '>
+	<div class='widget-header'> <i class='icon-file'></i><h3>rrrr </h3></div>
+	<div class='widget-content'>zerrrrrrrrrrrrr</div>
+	dfsdfsdf
+	</div>
+</div>
+
+
+<div class='span6'>
+	<div class='widget '>
+	<div class='widget-header'> <i class='icon-file'></i><h3>rrrr </h3></div>
+	<div class='widget-content'>zerrrrrrrrrrrrr</div>
+	dfsdfsdf
+	</div>
+</div>
+</div>
