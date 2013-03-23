@@ -17,31 +17,42 @@ $this->menu=array(
 ?>
 
 
-<?php echo CVarDumper::dump($pages,20);?>
+
+
+<h1><?php echo $model->name; ?> - <small><?php echo $model->description;?></small></h1>
+
+<div class="row-fluid">
+        <div class="span4">
+          <h2>Pages récentes</h2>
+          <?php
+$this->widget('zii.widgets.CListView', array(
+	'dataProvider'=>$pages,
+	'itemView'=>'_page',
+	'sortableAttributes'=>array(
+		'name',
+		'author',
+		'creationdate'
+	),
+	
+));
+ ?>
+</div>
+        <div class="span4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+       </div>
+        <div class="span4">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div>
+      </div>
 
 <div class='well'>
-<h1><?php echo $model->name; ?> <small><?php echo $model->description;?></small></h1>
+
+<p class='lead'> </p>
+
+
+
 </div>
-
-<?php echo Yii::app()->user->name; //echo $model->creator->lastname; ?>
-<?php //CVarDumper::dump($model,20,true);?>
-
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$pages,
-
-	'attributes'=>array(
-	/*'attributes'=>array(
-
-		'title',             // title attribute (in plain text)
-		//'content:html',  // description attribute in HTML
-	/*			array(               // related city displayed as a link
-						'label'=>'City',
-						'type'=>'raw',
-						'value'=>CHtml::link(CHtml::encode($model->city->name),
-								array('city/view','id'=>$model->city->id)),*/
-
-				),
-
-				//),
-
-)); ?>

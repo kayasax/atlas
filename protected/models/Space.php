@@ -71,7 +71,7 @@ class Space extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'pages' => array(self::HAS_MANY, 'Page', 'space'),
+			'pages0' => array(self::HAS_MANY, 'Page', 'space','together'=>true),
 			'creator' => array(self::BELONGS_TO, 'User', 'createdby'),
 		);
 	}

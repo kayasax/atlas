@@ -53,17 +53,20 @@ class SpaceController extends Controller
 	public function actionView($id)
 	{
 			
-		$dataProvider=new CActiveDataProvider('Space', array(
+		$dataProvider=new CActiveDataProvider('Page', array(
 				'criteria'=>array(
+						'condition'=>"space=$id",
 						'order'=>'creationdate DESC',
-						'with'=>array('pages'),
+						
+						
 				),
 				'pagination'=>array(
-						'pageSize'=>10,
+						'pageSize'=>5,
 				),
+
 		));
 		
-		
+		//var_dump($dataProvider->getData());
 		
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
