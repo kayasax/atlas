@@ -1,0 +1,26 @@
+<?php
+/* @var $this SpaceController */
+/* @var $data Space */
+?>
+<div class="view well">
+<h2> <?php ///echo CHtml::link(CHtml::encode($data->pages->title),array('view','id'=>$data->pages->idspace)); ?> </h2>
+
+
+
+
+	<h2> <?php echo CHtml::link(CHtml::encode($data->title),array('/page/view','id'=>$data->idpage)); ?> </h2>
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('intro')); ?> : </b>
+	<?php echo nl2br(CHtml::encode($data->intro)); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('creationdate')); ?> : </b>
+	<?php echo CHtml::encode($data->creationdate); ?>
+	<br />
+
+	<b>Créé par : </b>
+	<?php echo CHtml::encode($data->author); ?>
+	<br />
+
+
+</div>
