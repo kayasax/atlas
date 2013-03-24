@@ -3,6 +3,7 @@
 /* @var $model Page */
 
 $this->breadcrumbs=array(
+	$model->space0->name=>array('space/view/','id'=>$model->space0->idspace),
 	'Pages'=>array('index'),
 	$model->title,
 );
@@ -17,12 +18,22 @@ $this->menu=array(
 ?>
 
 <div class='well'>
-<h2><?php echo $model->title; ?><small> - crée le  <?php echo $model->creationdate;?> par <?php echo $model->author;?></small></h2>
-<h4><?php echo $model->intro; ?></h4>
+	<div class='row'>
+		<div class='span4'><h2><?php echo $model->title; ?></h2><h5><?php echo $model->intro; ?></h5></div>
+		<div class='span4'> 
+			<ul class='unstyled'>
+				<li><small> <i class='icon-time' title='Créé le'></i>  <?php echo $model->creationdate;?> <i class='icon-user' title='auteur'></i> <?php echo $model->author;?></small></li>
+				<li><small> <i class='icon-pencil' title='Dernière modification'></i>  <?php echo $model->lasttouched;?> 
+			</ul>
+		</div>
+		
+	</div>
 </div>
 
-<div class='well'>
-<?php echo $model->content; ?>
+<div class='widget '>
+	<div class='widget-content'>
+	<?php echo $model->content; ?>
+	</div>
 </div>
 
 

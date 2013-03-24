@@ -129,7 +129,7 @@ class Space extends CActiveRecord
 	            $this->createdby=1;
 	        }
 	        else
-	            $this->lasttouched=time();
+	            $this->lasttouched=new CDbExpression('NOW()');
 	        return true;
 	    }
 	    else

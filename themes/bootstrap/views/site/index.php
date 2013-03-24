@@ -30,18 +30,55 @@ $this->pageTitle=Yii::app()->name;
 
 <div class='span6'>
 	<div class='widget '>
-	<div class='widget-header'> <i class='icon-file'></i><h3>rrrr </h3></div>
-	<div class='widget-content'>zerrrrrrrrrrrrr</div>
-	dfsdfsdf
+	<div class='widget-header'> <i class='icon-file'></i><h3>Dernières modifications</h3></div>
+	<div class='widget-content'>
+			<ul class='unstyled'>
+				<li><?php echo CHtml::link('test',CHtml::normalizeUrl(array('page/6'))); ?></li>
+				<li>test2</li>
+			</ul>
+	</div>
 	</div>
 </div>
 
 
 <div class='span6'>
 	<div class='widget '>
-	<div class='widget-header'> <i class='icon-file'></i><h3>rrrr </h3></div>
-	<div class='widget-content'>zerrrrrrrrrrrrr</div>
-	dfsdfsdf
+	<div class='widget-header'> <i class='icon-heart'></i><h3>Mes favoris </h3></div>
+	<div class='widget-content'>
+		<ul class='unstyled'>
+				<li><?php echo CHtml::link('Changelog',CHtml::normalizeUrl(array('page/7'))); ?></li>
+				<li>test2</li>
+		</ul>
+		
+	</div>
 	</div>
 </div>
+</div> <!-- row-->
+
+<div class='row'>
+
+<div class='span6'>
+	<div class='widget '>
+	<div class='widget-header'> <i class='icon-file'></i><h3>Dernières modifications</h3></div>
+	<div class='widget-content'>
+			<ul class='unstyled'>
+				<li><?php echo CHtml::link('test',CHtml::normalizeUrl(array('page/6'))); ?></li>
+				<li>test2</li>
+			</ul>
+	</div>
+	</div>
 </div>
+
+
+<div class='span6'>
+	<div class='widget '>
+	<div class='widget-header'> <i class='icon-file'></i><h3>Statistiques </h3></div>
+	<div class='widget-content'>
+		<dl class='dl-horizontal'>
+			<dt>Nombre d'espace : </dt><dd>12</dd>
+		</dl>
+		
+	</div>
+	</div>
+</div>
+</div> <!-- row-->

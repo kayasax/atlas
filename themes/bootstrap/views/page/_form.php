@@ -36,11 +36,12 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
  
 
 <div class="tinymce">
-<?php echo $form->labelEx($model,'content'); ?><br />
+<?php echo $form->labelEx($model,'content'); ?>
 <?php
 
 $this->widget('ext.tinymce.TinyMce', array(
     'model' => $model,
+    
     'attribute' => 'content',
     // Optional config
     'compressorRoute' => 'tinyMce/compressor',
@@ -54,8 +55,22 @@ $this->widget('ext.tinymce.TinyMce', array(
     'htmlOptions' => array(
         'rows' => 6,
         'cols' => 60,
+        'class' => 'tinymce',
     ),
-));
+    'settings' => array(
+        'content_css' => Yii::app()->theme->baseUrl."/css/styles.css",
+        'theme_advanced_buttons1' =>
+        'bold,italic,underline,strikethrough,|,cut,copy,paste,pastetext,pasteword,|,undo,redo,|,forecolor,backcolor,|,outdent,indent,blockquote,|,styleselect,formatselect,|,print,|,visualaid,code,fullscreen',//,fontselect,fontsizeselect
+        'theme_advanced_buttons2' => 'justifyleft,justifycenter,justifyright,justifyfull,|,bullist,numlist,|,link,unlink,anchor,image,|,charmap,emotions,iespell,advhr,|,', //cleanup,help,
+        'theme_advanced_buttons3' => 'tablecontrols,|,insertdate,inserttime,|,visualchars,nonbreaking,template',
+        'theme_advanced_buttons4' => '',
+        'theme_advanced_toolbar_location' => 'top',
+        'theme_advanced_toolbar_align' => 'left',
+        'theme_advanced_statusbar_location' => 'bottom',
+        'theme_advanced_font_sizes' => "10=10pt,11=11pt,12=12pt,13=13pt,14=14pt,15=15pt,16=16pt"
+        ),
+                                                                                                                        )
+);
 
 /* $this->widget('application.extensions.tinymce.TinyMce',
     array(

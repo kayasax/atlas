@@ -136,7 +136,7 @@ class Page extends CActiveRecord
 	            $this->author=1;
 	        }
 	        else
-	            $this->lasttouched=time();
+	            $this->lasttouched=new CDbExpression('NOW()');
 	        return true;
 	    }
 	    else
