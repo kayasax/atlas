@@ -29,12 +29,39 @@ class Space extends CActiveRecord
 		return parent::model($className);
 	}
 
+	/*
+	* return the parents (space list)
+	*/
 	public static function getParents(){
 		$criteria = new CDbCriteria;
 		$criteria->select = 'idspace, name'; 
 		$p=Space::model()->findAll($criteria);
 		return CHtml::listData($p,'idspace','name');
 	}
+
+	/** return the index page
+	*/
+	public static function getIndexPage($idspace){
+		return Page::Model()->find('space=:sid and title=:titre', array(':sid'=>$idspace,'titre'=>'index' ));
+
+	}
+
+	/**
+	*return the list of sub spaces
+	**/
+	public static function getChildSpace($idspace){
+		//return Space::Model()->find('parent=:sid', array(':sid'=>$idspace,));
+		return new CActiveDataProvider('Space', array(
+				'criteria'=>array(
+					'condition'=>"parent=$idspace",
+							
+				)
+
+		));
+
+	}
+	
+
 
 	/**
 	 * @return string the associated database table name

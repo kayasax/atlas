@@ -19,10 +19,11 @@ $this->menu=array(
 
 <div class='well'>
 	<div class='row'>
-		<div class='span4'><h2><?php echo $model->title; ?></h2><h5><?php echo $model->intro; ?></h5></div>
-		<div class='span4'> 
+		<div class='span6'><h2><?php echo $model->title; ?></h2><h5><?php echo $model->intro; ?></h5></div>
+		<div class='span2'> 
 			<ul class='unstyled'>
-				<li><small> <i class='icon-time' title='Créé le'></i>  <?php echo $model->creationdate;?> <i class='icon-user' title='auteur'></i> <?php echo $model->author;?></small></li>
+				<li><small> <i class='icon-user' title='auteur'></i> <?php echo $model->author;?></small></li>
+				<li><small> <i class='icon-time' title='Créé le'></i>  <?php echo $model->creationdate;?> </small></li>
 				<li><small> <i class='icon-pencil' title='Dernière modification'></i>  <?php echo $model->lasttouched;?> 
 			</ul>
 		</div>

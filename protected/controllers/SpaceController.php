@@ -55,10 +55,8 @@ class SpaceController extends Controller
 			
 		$dataProvider=new CActiveDataProvider('Page', array(
 				'criteria'=>array(
-						'condition'=>"space=$id",
-						'order'=>'creationdate DESC',
-						
-						
+					'condition'=>"space=$id",
+					'order'=>'creationdate DESC',		
 				),
 				'pagination'=>array(
 						'pageSize'=>5,
@@ -66,11 +64,18 @@ class SpaceController extends Controller
 
 		));
 		
+		$index=new CActiveDataProvider('Page', array(
+				'criteria'=>array(
+					'condition'=>"space=$id and  name='index'",
+				),
+		));
 		//var_dump($dataProvider->getData());
 		
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 			'pages'=>$dataProvider,
+			'index'=>Space::getIndexPage($id),
+			'childs'=>Space::getChildSpace($id),
 		));
 	}
 

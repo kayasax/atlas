@@ -19,40 +19,44 @@ $this->menu=array(
 
 
 
-<h1><?php echo $model->name; ?> - <small><?php echo $model->description;?></small></h1>
+<div class="widget-header"><h3><?php echo $model->name; ?> - <small><?php echo $model->description;?></small></h3></div>
 
-<div class="row-fluid">
-        <div class="span4">
-          <h2>Pages récentes</h2>
-          <?php
-$this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$pages,
-	'itemView'=>'_page',
-	'sortableAttributes'=>array(
-		'name',
-		'author',
-		'creationdate'
-	),
-	
-));
- ?>
+<?php if( isset($index->content) ):?> 
+<div class='widget widget-content'>
+	<p class='lead'> <?php echo $index->content; ?></p>
 </div>
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-       </div>
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div>
-      </div>
+<?php endif;?>
+<div class="row">
+    <div class="span4">
+        <div class="widget-header"><i class="icon-book"></i><h3>Espaces enfants</h3></div>
+        <div class="widget-content">
+        <?php //echo CVarDumper::dump($childs->getData());?>	
 
-<div class='well'>
+        <?php
+			$this->widget('zii.widgets.CListView', array(
+				'dataProvider'=>$childs,
+				'itemView'=>'_child',
+				
+		));
+		?>
+ 		</div>
+	</div>
 
-<p class='lead'> </p>
-
-
-
+    <div class="span5">
+        <div class="widget-header"><i class="icon-file"></i><h3>Pages récentes</h3></div>
+        <div class="widget-content">
+	   	<?php
+			$this->widget('zii.widgets.CListView', array(
+				'dataProvider'=>$pages,
+				'itemView'=>'_page',
+				'sortableAttributes'=>array(
+				'name',
+				'author',
+				'creationdate',
+			),
+		));
+ 		?>
+ 		</div>
+	</div>
 </div>
+
