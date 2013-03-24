@@ -4,7 +4,6 @@
 /* @var $form CActiveForm */
 ?>
 
-  
 
 <?php /** @var BootActiveForm $form */
 $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
@@ -58,7 +57,7 @@ $this->widget('ext.tinymce.TinyMce', array(
         'class' => 'tinymce',
     ),
     'settings' => array(
-        'content_css' => Yii::app()->theme->baseUrl."/css/styles.css",
+        'content_css' => Yii::app()->theme->baseUrl.'/css/bootstrap.css', //Yii::app()->theme->baseUrl."/css/styles.css",
         'theme_advanced_buttons1' =>
         'bold,italic,underline,strikethrough,|,cut,copy,paste,pastetext,pasteword,|,undo,redo,|,forecolor,backcolor,|,outdent,indent,blockquote,|,styleselect,formatselect,|,print,|,visualaid,code,fullscreen',//,fontselect,fontsizeselect
         'theme_advanced_buttons2' => 'justifyleft,justifycenter,justifyright,justifyfull,|,bullist,numlist,|,link,unlink,anchor,image,|,charmap,emotions,iespell,advhr,|,', //cleanup,help,
