@@ -8,7 +8,7 @@
 
 	
 	<!-- <?php echo CHtml::encode($data->getAttributeLabel('name')); ?> -->
-	<h2> <?php echo CHtml::link(CHtml::encode($data->name),array('view','id'=>$data->idspace)); ?> </h2>
+	<h2> <?php echo CHtml::link(CHtml::encode($data->name),array('view','id'=>$data->idspace,'nom'=>$data->name)); ?> </h2>
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('description')); ?> : </b>
 	<?php echo nl2br(CHtml::encode($data->description)); ?>
@@ -19,7 +19,7 @@
 	<br />
 
 	<b>Créé par : </b>
-	<?php echo CHtml::encode($data->createdby); ?>
+	<?php echo CHtml::encode($data->creator->username); ?>
 	<br />
 
 	

@@ -54,9 +54,11 @@ class SpaceController extends Controller
 	{
 			
 		$dataProvider=new CActiveDataProvider('Page', array(
+
 				'criteria'=>array(
 					'condition'=>"space=$id",
 					'order'=>'creationdate DESC',		
+					'with'=>'author0',
 				),
 				'pagination'=>array(
 						'pageSize'=>5,
@@ -152,6 +154,7 @@ class SpaceController extends Controller
 	public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Space',array(
+		'criteria'=>array('with'=>'creator'),
         'pagination'=>array(
                 'pageSize'=>5,
         ),));

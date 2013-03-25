@@ -153,7 +153,7 @@ class Space extends CActiveRecord
 	            $this->creationdate=new CDbExpression('NOW()');
 	            $this->lasttouched=new CDbExpression('NOW()');
 	            //$this->createdby=Yii::app()->user->id;
-	            $this->createdby=1;
+	            $this->createdby=Yii::app()->user->id;
 	        }
 	        else
 	            $this->lasttouched=new CDbExpression('NOW()');

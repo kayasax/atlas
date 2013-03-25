@@ -155,7 +155,7 @@ class PageController extends Controller
 	public function loadModel($id)
 	{
 		//$model=Page::model()->with('author0')->findByPk($id);
-		$model=Page::model()->with('space0')->findByPk($id); //,'author0'
+		$model=Page::model()->with('space0',"author0")->findByPk($id); //,'author0'
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
