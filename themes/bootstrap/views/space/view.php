@@ -16,7 +16,7 @@ $this->menu=array(
 );
 ?>
 
-
+<?php //CVarDumper::dump(Yii::app()->user->email,20);?>
 
 
 <div class="widget-header"><h3><?php echo $model->name; ?> - <small><?php echo $model->description;?></small></h3></div>
