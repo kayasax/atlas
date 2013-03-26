@@ -3,6 +3,9 @@
 
 $this->pageTitle=Yii::app()->name;
 ?>
+
+
+<!-- Affichage messages flash -->
 <?php
 	 $this->widget('bootstrap.widgets.TbAlert', array(
         'block'=>true, // display a larger alert block?

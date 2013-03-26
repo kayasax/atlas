@@ -53,7 +53,10 @@ class Page extends CActiveRecord
 			array('space,title','required'),
 			array('space, status', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>100),
-			array('tags', 'length', 'max'=>300),
+			array('tags', 'length', 'max'=>128),
+			 array('tags', 'match', 'pattern'=>'/^[\w\s,]+$/',
+            'message'=>'Les tags ne peuvent contenir que des lettres.'),
+        	array('tags', 'normalizeTags'),
 			array('version', 'length', 'max'=>5),
 			array('intro, content, creationdate, lasttouched', 'safe'),
 			// The following rule is used by search().
@@ -125,6 +128,9 @@ class Page extends CActiveRecord
 		));
 	}
 	
+	/**
+	* Mises à jour automatique des dates de création / modif
+	*/
 	protected function beforeSave(){
 	    if(parent::beforeSave())
 	    {
@@ -141,5 +147,33 @@ class Page extends CActiveRecord
 	    }
 	    else
 	        return false;
+	}
+
+	/**
+	* Validation de l'unicité des tags
+	*/
+	public function normalizeTags($attribute,$params)
+	{
+    $this->tags=Tag::array2string(array_unique(Tag::string2array($this->tags)));
+	}
+
+	protected function afterSave()
+	{
+   	parent::afterSave();
+    Tag::model()->updateFrequency($this->_oldTags, $this->tags);
+	}	
+ 
+	private $_oldTags;
+ 
+	protected function afterFind()
+	{
+    	parent::afterFind();
+    	$this->_oldTags=$this->tags;
+	}
+
+	protected function afterDelete()
+	{
+    parent::afterDelete();
+    Tag::model()->updateFrequency($this->tags, '');
 	}
 }

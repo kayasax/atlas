@@ -69,15 +69,11 @@ $this->widget('ext.tinymce.TinyMce', array(
         'theme_advanced_font_sizes' => "10=10pt,11=11pt,12=12pt,13=13pt,14=14pt,15=15pt,16=16pt"
         ),
                                                                                                                         )
-);
+);?>
 
-/* $this->widget('application.extensions.tinymce.TinyMce',
-    array(
-        'model'=>$model,
-        'attribute'=>'content',
-        'editorTemplate'=>'full',
-        'htmlOptions'=>array('rows'=>6, 'cols'=>50, 'class'=>'tinymce'),
-));*/ ?>
+<?php //echo $form->labelEx($model,'tags'); ?>
+<?php echo $form->textFieldRow($model, 'tags', array('class'=>'span8','maxlength'=>128)); ?>
+
 <?php echo $form->error($model,'content'); ?>
 </div>
 

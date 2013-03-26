@@ -45,6 +45,10 @@
 			)));}
 
     ?>
+
+    <?php $this->widget('TagCloud', array(
+        'maxTags'=>20,//Yii::app()->params['tagCloudCount'],
+    )); ?>
     
             
         <?php /*

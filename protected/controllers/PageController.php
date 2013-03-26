@@ -37,7 +37,7 @@ class PageController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'users'=>array('loic'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -124,7 +124,17 @@ class PageController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Page');
+		$criteria=new CDbCriteria();
+    	if(isset($_GET['tag']))
+        $criteria->addSearchCondition('tags',$_GET['tag']);
+
+
+		$dataProvider=new CActiveDataProvider('Page',array(
+			'pagination'=>array(
+				'pagesize'=>20,
+			),
+			'criteria'=>$criteria,
+		));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
