@@ -27,6 +27,7 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
+		if( !Yii::app()->user->isGuest &&   (!isset(Yii::app()->user->lastname) )) {Yii::app()->user->setFlash('error', "<i class=' icon-warning-sign'></i> Merci de ".CHtml::link(" compléter votre profil",array('/userprofile/update/','id'=>Yii::app()->user->id))." SVP (nom + prénom)");}
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
 		$this->render('index');

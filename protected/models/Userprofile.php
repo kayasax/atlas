@@ -8,11 +8,11 @@
  * @property string $lastname
  * @property string $firstname
  * @property string $email
+ * @property integer $status
+ * @property string $lastseen
  *
  * The followings are the available model relations:
- * @property File[] $files
- * @property Page[] $pages
- * @property Space[] $spaces
+ * @property User $iduser0
  */
 class Userprofile extends CActiveRecord
 {
@@ -42,10 +42,13 @@ class Userprofile extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('iduser', 'required'),
+			array('iduser, status', 'numerical', 'integerOnly'=>true),
 			array('lastname, firstname, email', 'length', 'max'=>100),
+			array('lastseen', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('iduser, lastname, firstname, email', 'safe', 'on'=>'search'),
+			array('iduser, lastname, firstname, email, status, lastseen', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,9 +60,7 @@ class Userprofile extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'files' => array(self::HAS_MANY, 'File', 'added_by'),
-			'pages' => array(self::HAS_MANY, 'Page', 'creator'),
-			'spaces' => array(self::HAS_MANY, 'Space', 'creator'),
+			'iduser0' => array(self::BELONGS_TO, 'User', 'iduser'),
 		);
 	}
 
@@ -70,9 +71,11 @@ class Userprofile extends CActiveRecord
 	{
 		return array(
 			'iduser' => 'Iduser',
-			'lastname' => 'Lastname',
-			'firstname' => 'Firstname',
-			'email' => 'Email',
+			'lastname' => 'Nom',
+			'firstname' => 'Prénom',
+			'email' => 'Adresse Email',
+			'status' => 'Statut',
+			'lastseen' => 'Lastseen',
 		);
 	}
 
@@ -91,18 +94,11 @@ class Userprofile extends CActiveRecord
 		$criteria->compare('lastname',$this->lastname,true);
 		$criteria->compare('firstname',$this->firstname,true);
 		$criteria->compare('email',$this->email,true);
+		$criteria->compare('status',$this->status);
+		$criteria->compare('lastseen',$this->lastseen,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
-	}
-
-
-		/**
-	 * @return the user's fullname
-	 */
-	public function getFullname()
-	{
-		return $this->firstname." ".$this->lastname;
 	}
 }

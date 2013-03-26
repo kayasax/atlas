@@ -3,7 +3,7 @@
 /* @var $model Userprofile */
 
 $this->breadcrumbs=array(
-	'Profiles'=>array('index'),
+	'Userprofiles'=>array('index'),
 	$model->iduser=>array('view','id'=>$model->iduser),
 	'Update',
 );
@@ -16,6 +16,9 @@ $this->menu=array(
 );
 ?>
 
-<h1>Mise à jour du profil </h1> 
-
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<div class='widget'>
+	<div class='widget-header'><i class='icon-user'></i><h3>Mise à jour du profil <?php echo $model->iduser; ?></h3></div>
+	<div class='widget-content'>
+	<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+	</div>
+</div>

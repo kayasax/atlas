@@ -129,4 +129,17 @@ class User extends CActiveRecord
     	else
     		return false;
     }
+    
+    protected function afterSave()
+    {   
+    	//die ("id :".$this->id);
+    	parent::afterSave();
+    	$exists=Userprofile::model()->exists("iduser = $this->id");
+    	if($exists === false){
+    		$profile=new Userprofile;
+    		$profile->iduser=$this->id;
+    		$profile->save();
+    		//Userprofile::model()->insert(array('iduser'=>$this->id));
+    	}
+    }
 }

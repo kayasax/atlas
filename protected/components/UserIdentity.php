@@ -28,9 +28,17 @@ class UserIdentity extends CUserIdentity
             $this->errorCode=self::ERROR_PASSWORD_INVALID;
         else
         {
+        	
             $this->_id=$user->id;
             $this->setState('username',$user->username);
+            $this->setState('firstname',$user->userprofile->firstname);
+            $this->setState('lastname',$user->userprofile->lastname);
             $this->setState('email',$user->userprofile->email);
+            //$this->setState('test',"test");
+            //save profile infos to session
+           
+
+            
             $this->errorCode=self::ERROR_NONE;
         }
         return $this->errorCode==self::ERROR_NONE;

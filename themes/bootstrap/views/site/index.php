@@ -3,7 +3,17 @@
 
 $this->pageTitle=Yii::app()->name;
 ?>
+<?php
+	 $this->widget('bootstrap.widgets.TbAlert', array(
+        'block'=>true, // display a larger alert block?
+        'fade'=>true, // use transitions?
+        'closeText'=>'&times;', // close link text - if set to false, no close link is displayed
+        /*'alerts'=>array( // configurations per alert type
+            'success'=>array('block'=>true, 'fade'=>true, 'closeText'=>'&times;'), // success, info, warning, error or danger
 
+        ),*/
+    )); 
+?>
 <div class='jumbotron'>
 	<div class='container'>
 		<div class='row'>
@@ -22,9 +32,24 @@ $this->pageTitle=Yii::app()->name;
 	</div>
 </div>
 
-<h2>Utilisation</h2>
-<p>Le site est constitué sous forme de wiki ou chaqun peut (est encouragé même) modifier le contenu des pages et ainsi maintenir une documentation <strong>la plus à jour possible</strong></p>
-<p><?php echo CHtml::link('Les espaces',CHtml::normalizeUrl(array('space/index'))) ;?> permettent d'orgnaiser le contenu par thème</p>
+<div class='row'>
+<div class='span12'>
+<?php
+	 $this->widget('bootstrap.widgets.TbAlert', array(
+        'block'=>true, // display a larger alert block?
+        'fade'=>true, // use transitions?
+        'closeText'=>'&times;', // close link text - if set to false, no close link is displayed
+        /*'alerts'=>array( // configurations per alert type
+            'success'=>array('block'=>true, 'fade'=>true, 'closeText'=>'&times;'), // success, info, warning, error or danger
+
+        ),*/
+    )); 
+?>
+	<h2>Utilisation</h2>
+	<p>Le site est constitué sous forme de wiki ou chaqun peut (est encouragé même) modifier le contenu des pages et ainsi maintenir une documentation <strong>la plus à jour possible</strong></p>
+	<p><?php echo CHtml::link('Les espaces',CHtml::normalizeUrl(array('space/index'))) ;?> permettent d'orgnaiser le contenu par thème</p>
+</div>
+</div>
 
 <div class='row'>
 
