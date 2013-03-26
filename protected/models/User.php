@@ -102,13 +102,31 @@ class User extends CActiveRecord
 	}
 
 	public function validatePassword($password){
-		//die(crypt('test',''));
-		//return crypt($password,$this->password)===$this->password;
-		return $password===$this->password;
+		//die(crypt('loic'));
+		return crypt($password,$this->password)===$this->password;
+		//return $password===$this->password;
 	}
 
 	public function hashPassword($password)
     {
         return crypt($password, $this->generateSalt());
+    }
+    
+    protected function beforeSave(){
+    	if(parent::beforeSave())
+    	{
+    		if($this->isNewRecord)
+    		{
+    			$this->password=crypt($this->password);
+    			/*$this->lasttouched=new CDbExpression('NOW()');
+    			//$this->createdby=Yii::app()->user->id;
+    			$this->createdby=Yii::app()->user->id;*/
+    		}
+    		else{}
+    			
+    		return true;
+    	}
+    	else
+    		return false;
     }
 }
