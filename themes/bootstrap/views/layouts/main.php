@@ -13,7 +13,7 @@
 
 	<?php Yii::app()->bootstrap->register(); ?>
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/styles.css" />
-	
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->baseUrl; ?>/css/font-awesome.min.css" />
 	
 </head>
 

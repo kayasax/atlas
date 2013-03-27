@@ -29,7 +29,9 @@ $this->menu=array(
 		</div>
 	</div> <!-- / row -->
 	<div class='row'>
+	<div class='span9'><i class='icon-paper-clip icon-2x'></i>tes</div>
 	<?php foreach($model->files as $file):?>
+	
 	<?php echo $file->filename;?>
 	<?php endforeach;?>
 	</div>
