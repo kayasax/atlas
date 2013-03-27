@@ -45,13 +45,12 @@ class File extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('added_by, page,file', 'required'),
-			array('added_by, page', 'numerical', 'integerOnly'=>true),
-			array('filename, mime', 'length', 'max'=>100),
-			array('filedescription, date', 'safe'),
+			array('file', 'required'),
+						
+			array('filedescription,page, date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('idfile, filename, mime, filedescription, date, added_by, page', 'safe', 'on'=>'search'),
+			array(' filedescription, date, added_by, page', 'safe', 'on'=>'search'),
 			array('file', 'file', 'allowEmpty' => false),
 			
 		);
@@ -79,7 +78,7 @@ class File extends CActiveRecord
 			'idfile' => 'Idfile',
 			'filename' => 'Filename',
 			'mime' => 'Mime',
-			'filedescription' => 'Filedescription',
+			'filedescription' => 'Description',
 			'date' => 'Date',
 			'added_by' => 'Added By',
 			'page' => 'Page',
@@ -108,5 +107,20 @@ class File extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+
+	public function beforeSave(){
+		if(parent::beforeSave())
+	    {
+	    	$this->date='now()';
+	        $this->added_by=Yii::app()->user->id; //new CDbExpression('NOW()');
+	          
+	        
+	       
+	        return true;
+	    }
+	    else
+	        return false;
+		
 	}
 }

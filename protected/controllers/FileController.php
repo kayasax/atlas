@@ -73,12 +73,14 @@ class FileController extends Controller
 
 		if(isset($_POST['File']))
 		{
+
 			$model->attributes=$_POST['File'];
+			if( !file_exists(Yii::app()->basePath . '/../files/'.$model->page)){ mkdir(Yii::app()->basePath . '/../files/'.$model->page);}
 			$model->file=CUploadedFile::getInstance($model,'file');
 			
 			if($model->save()){
 				if(isset($model->file)){
-				$images_path = realpath(Yii::app()->basePath . '/../files');
+				$images_path = realpath(Yii::app()->basePath . '/../files/'.$model->page);
 				$model->file->saveAs($images_path . '/' . $model->file);
 				}
 				$this->redirect(array('view','id'=>$model->idfile));
