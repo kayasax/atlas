@@ -1,9 +1,15 @@
 <?php
 //echo yii::app()->request->getParam('id');
+// necho $test;
 ?>
-<ul>
-<li><?php echo CHtml::link('Créer une page',array('page/create','idspace'=>yii::app()->request->getParam('id') )); ?></li>
-    <li><?php echo CHtml::link('Manage Posts',array('post/admin')); ?></li>
-    
-    <li><?php echo CHtml::link('Logout',array('site/logout')); ?></li>
-</ul>
+
+<div class='widget'>
+    <div class='widget-header'><h3><i class='icon-tasks'></i>&nbsp; Actions</h3></div>
+    <div class='widget-content'>
+    	 <?php $this->widget('bootstrap.widgets.TbMenu', array(
+    		'type'=>'list',
+    		'items'=>$items,
+    		)); ?>
+    </div>
+</div>
+
