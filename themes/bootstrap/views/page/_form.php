@@ -66,7 +66,32 @@ $this->widget('ext.tinymce.TinyMce', array(
         'theme_advanced_toolbar_location' => 'top',
         'theme_advanced_toolbar_align' => 'left',
         'theme_advanced_statusbar_location' => 'bottom',
-        'theme_advanced_font_sizes' => "10=10pt,11=11pt,12=12pt,13=13pt,14=14pt,15=15pt,16=16pt"
+        'theme_advanced_font_sizes' => "10=10pt,11=11pt,12=12pt,13=13pt,14=14pt,15=15pt,16=16pt",
+
+		// Style formats
+		'style_formats'=>array(
+			array('title'=> 'Accentuation', 'inline'=> 'b'),
+			array('title'=> 'Label', 'inline'=> 'span','classes'=>'label'),
+			array('title'=> 'Label Success', 'inline'=> 'span','classes'=>'label label-success'),
+			array('title'=> 'Label Warning', 'inline'=> 'span','classes'=>'label label-warning'),
+			array('title'=> 'Label Important', 'inline'=> 'span','classes'=>'label label-important'),
+			array('title'=> 'Label INFO', 'inline'=> 'span','classes'=>'label label-info'),
+			array('title'=> 'Alerte', 'inline'=> 'span','classes'=>'alert'),
+			array('title'=> 'Alerte erreur', 'inline'=> 'span','classes'=>'alert alert-error'),
+			array('title'=> 'Icone', 'inline'=> 'i','classes'=>'icon-warning-sign'),
+
+
+
+/*{title : 'Red text', inline : 'span', styles : {color : '#ff0000'}},
+{title : 'Red header', block : 'h1', styles : {color : '#ff0000'}},
+{title : 'Example 1', inline : 'span', classes : 'example1'},
+{title : 'Example 2', inline : 'span', classes : 'example2'},
+{title : 'Table styles'},
+{title : 'Table row 1', selector : 'tr', classes : 'tablerow1'}
+],	*/
+		),
+
+
         ),
                                                                                                                         )
 );?>

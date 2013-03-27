@@ -125,7 +125,7 @@ class ETinyMce extends CInputWidget
     *
     * @var array
     */
-   private $plugins = array('save');
+   private $plugins = array('style','layer','table','save','advhr','advimage','advlink','emotions','spellchecker','inlinepopups','insertdatetime','preview','media','searchreplace','print','contextmenu','paste','directionality','fullscreen','noneditable','visualchars','nonbreaking','xhtmlxtras','template');
 
    /**
     * Font families to display on the font list.

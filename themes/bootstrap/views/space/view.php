@@ -28,7 +28,7 @@ $this->menu=array(
 <?php endif;?>
 <div class="row">
     <div class="span4">
-        <div class="widget-header"><i class="icon-book"></i><h3>Espaces enfants</h3></div>
+        <div class="widget-header"><h3><i class="icon-book"></i> &nbsp;Espaces enfants</h3></div>
         <div class="widget-content">
         <?php //echo CVarDumper::dump($childs->getData());?>	
 
@@ -43,7 +43,7 @@ $this->menu=array(
 	</div>
 
     <div class="span5">
-        <div class="widget-header"><i class="icon-file"></i><h3>Pages récentes</h3></div>
+        <div class="widget-header"><h3><i class="icon-file"></i>&nbsp; Pages récentes</h3></div>
         <div class="widget-content">
 	   	<?php
 			$this->widget('zii.widgets.CListView', array(

@@ -6,14 +6,18 @@
             <?php echo $content; ?>
         </div><!-- content -->
     </div>
+    
     <div class="span3">
         <div id="sidebar">
         
-                
+      <div class='widget'>
+      <div class='widget-header'><h3><i class='icon-tasks'></i>&nbsp; Actions</h3></div>
+       
+      <div class='widget-content'>
         <?php $this->widget('bootstrap.widgets.TbMenu', array(
     'type'=>'list',
     'items'=>array(
-        array('label'=>'Actions','icon'=>'tasks'),
+        //array('label'=>'Actions','icon'=>'tasks'),
         array('label'=>'Créer un espace', 'icon'=>'book', 'url'=>$this->createUrl('space/create',array('space'=>Yii::app()->request->getParam('id')))),
         
         /*array('label'=>'ANOTHER LIST HEADER'),
@@ -22,6 +26,8 @@
         array('label'=>'Help', 'icon'=>'flag', 'url'=>'#'),*/
     ),
 )); ?>
+        
+        
     
     <?php 
 	if($this->id == 'space' && Yii::app()->request->getParam('id')!='' ){
@@ -45,7 +51,8 @@
 			)));}
 
     ?>
-
+    </div>
+</div>
     <?php $this->widget('TagCloud', array(
         'maxTags'=>20,//Yii::app()->params['tagCloudCount'],
     )); ?>

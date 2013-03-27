@@ -27,7 +27,11 @@ $this->menu=array(
 				<li><small> <i class='icon-pencil' title='Dernière modification'></i>  <?php echo $model->lasttouched;?> 
 			</ul>
 		</div>
-		
+	</div> <!-- / row -->
+	<div class='row'>
+	<?php foreach($model->files as $file):?>
+	<?php echo $file->filename;?>
+	<?php endforeach;?>
 	</div>
 </div>
 
