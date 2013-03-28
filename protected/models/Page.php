@@ -78,6 +78,7 @@ class Page extends CActiveRecord
 			'author0' => array(self::BELONGS_TO, 'User', 'author'),
 			'revision' => array(self::HAS_ONE, 'Revision', 'idpage'),
 			'files' => array(self::HAS_MANY, 'File', 'page'),
+			'nbFiles' => array(self::STAT, 'File', 'page'),
 		);
 	}
 

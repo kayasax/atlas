@@ -8,6 +8,8 @@ $this->breadcrumbs=array(
 	$model->title,
 );
 
+Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/page.js',CClientScript::POS_END);
+
 $this->menu=array(
 	array('label'=>'List Page', 'url'=>array('index')),
 	array('label'=>'Create Page', 'url'=>array('create')),
@@ -28,19 +30,17 @@ $this->menu=array(
 			</ul>
 		</div>
 	</div> <!-- / row -->
+	
+
 	<div class='row'>
-	<div class='span9'>
-	<i class='icon-paper-clip icon-2x'></i>
-	
-	<?php $this->widget('ext.elFinder.ElFinderWidget', array(
-        'connectorRoute' => 'Elfinder/pageConnector/?id='.$this->id,
-        ));?>
-	
-	</div>
-	<?php foreach($model->files as $file):?>
-	
-	<?php echo $file->filename;?>
-	<?php endforeach;?>
+		<div class='span8'>
+			<a href='#' id='showFile'><i class='icon-paper-clip icon-2x'></i> Voir les fichiers attachés (<?php echo $model->nbFiles;?>)</a>
+			<div id='files' style='display:none'>
+			<?php $this->widget('ext.elFinder.ElFinderWidget', array(
+		        'connectorRoute' => 'Elfinder/pageConnector/',
+		        ));?>
+			</div>
+		</div>
 	</div>
 </div>
 

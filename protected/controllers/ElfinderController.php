@@ -3,6 +3,8 @@ class ElfinderController extends CController
 {
     public function actions()
     {
+        /*var_dump($_GET);
+        Yii::app()->end();*/
     	    	
         return array(
             'connector' => array(
@@ -17,10 +19,10 @@ class ElfinderController extends CController
         	'pageConnector' => array(
         		'class' => 'ext.elFinder.ElFinderConnectorAction',
         		'settings' => array(
-        			'root' => Yii::getPathOfAlias('webroot') . '/files/'.$_GET['id'],
-        			'URL' => Yii::app()->baseUrl . '/files/'.$_GET['id'],
-        			'rootAlias' => 'Home',
-        			//'mimeDetect' => 'none'
+        			'root' => Yii::getPathOfAlias('webroot') . '/files/'.$_GET['pageid'].'/',
+        			'URL' => Yii::app()->baseUrl . '/files/'.$_GET['pageid'].'/',
+        			'rootAlias' => Page::model()->findByPk($_GET['pageid'])->title,
+        			'mimeDetect' => 'none'
         				)
         		),
         );
