@@ -51,7 +51,7 @@ class File extends CActiveRecord
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array(' filedescription, date, added_by, page', 'safe', 'on'=>'search'),
-			array('file', 'file', 'allowEmpty' => false),
+			//array('file', 'file', 'allowEmpty' => false),
 			
 		);
 	}
@@ -82,6 +82,7 @@ class File extends CActiveRecord
 			'date' => 'Date',
 			'added_by' => 'Added By',
 			'page' => 'Page',
+				'file'=>'Fichier',
 		);
 	}
 
@@ -112,11 +113,11 @@ class File extends CActiveRecord
 	public function beforeSave(){
 		if(parent::beforeSave())
 	    {
-	    	$this->date='now()';
+	    	$this->filename=$this->file;
+	    	$this->date=new CDbExpression('now()');
 	        $this->added_by=Yii::app()->user->id; //new CDbExpression('NOW()');
+	        $this->page=$_GET['pageid'];
 	          
-	        
-	       
 	        return true;
 	    }
 	    else
