@@ -153,13 +153,24 @@ class SpaceController extends Controller
 	 */
 	public function actionIndex()
 	{
+		//die(var_dump($search->search()));
+		
 		$dataProvider=new CActiveDataProvider('Space',array(
 		'criteria'=>array('with'=>'creator'),
         'pagination'=>array(
                 'pageSize'=>5,
         ),));
+		
+		$model=new Space('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Space']))
+			$model->attributes=$_GET['Space'];
+			
+		
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
+			'model'=>$model
+			
 		));
 	}
 

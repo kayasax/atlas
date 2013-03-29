@@ -78,7 +78,8 @@ class FileController extends Controller
 			$model->file=CUploadedFile::getInstance($model,'file');
 			
 			if(isset($model->file) && $model->file !=null ){
-				if( !file_exists(Yii::app()->basePath . '/../files/'.$model->page)){ mkdir(Yii::app()->basePath . '/../files/'.$model->page);}
+				//die(Yii::app()->basePath . '/../files/'.$model->page);
+				
 			}
 			
 			if($model->save()){

@@ -83,10 +83,10 @@ class Space extends CActiveRecord
 			array('parent', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>100),
 			//array('status', 'length', 'max'=>45),
-			array('description','safe'), //creationdate, lasttouched'
+			array('description,creationdate','safe'), //, lasttouched'
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('name, description, createdby, parent', 'safe', 'on'=>'search'),
+			array('name, description, createdby, parent,creationdate', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -136,8 +136,8 @@ class Space extends CActiveRecord
 		$criteria->compare('parent',$this->parent);
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('createdby',$this->createdby);
-		/*$criteria->compare('creationdate',$this->creationdate,true);
-		$criteria->compare('lasttouched',$this->lasttouched,true);
+		$criteria->compare('creationdate',$this->creationdate,true);
+		/*$criteria->compare('lasttouched',$this->lasttouched,true);
 		$criteria->compare('status',$this->status,true);*/
 
 		return new CActiveDataProvider($this, array(

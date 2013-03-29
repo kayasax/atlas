@@ -19,14 +19,14 @@ class TagCloud extends CPortlet
     /**
      * @var string the CSS class for the content container tag. Defaults to 'portlet-content'.
      */
-    public $contentCssClass='widget-content';
+    public $contentCssClass='widget-content well';
  
     protected function renderDecoration()
     {
     	if($this->title!==null)
     	{
     		echo "<div class=\"{$this->decorationCssClass}\">\n";
-    		echo " <h3><i class='icon-tag'></i>&nbsp; {$this->title}</h3>\n";
+    		echo " <h3><i class='icon-tags icon-2x'></i>&nbsp; {$this->title}</h3>\n";
     		echo "</div>\n";
     	}
     	}
@@ -39,8 +39,8 @@ class TagCloud extends CPortlet
         {
             $link=CHtml::link(CHtml::encode($tag), array('page/index','tag'=>$tag));
             echo CHtml::tag('span', array(
-                'class'=>'btn',
-                'style'=>"font-size:{$weight}pt",
+                'class'=>'btn btn-mini',
+                'style'=>"font-size:{$weight}pt ; margin:2px",
             ), $link)."\n";
         }
     }

@@ -117,6 +117,9 @@ class File extends CActiveRecord
 	    	$this->date=new CDbExpression('now()');
 	        $this->added_by=Yii::app()->user->id; //new CDbExpression('NOW()');
 	        $this->page=$_GET['pageid'];
+	        // create directory if it doesnt exist
+	        if( !(file_exists(Yii::app()->basePath . '/../files/'.$this->page)))
+	       		mkdir(Yii::app()->basePath . '/../files/'.$this->page);
 	          
 	        return true;
 	    }

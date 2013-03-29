@@ -12,7 +12,7 @@
 	'method'=>'get',
 )); ?>
 
-	
+
 	<div class="row">
 		<?php echo $form->label($model,'name'); ?>
 		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>100)); ?>
