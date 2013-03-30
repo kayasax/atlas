@@ -66,6 +66,9 @@ class SpaceController extends Controller
 
 		));
 		
+		/**
+		* Does a page named index exist in this space ?
+		*/
 		$index=new CActiveDataProvider('Page', array(
 				'criteria'=>array(
 					'condition'=>"space=$id and  name='index'",
@@ -78,6 +81,7 @@ class SpaceController extends Controller
 			'pages'=>$dataProvider,
 			'index'=>Space::getIndexPage($id),
 			'childs'=>Space::getChildSpace($id),
+			'path'=>Space::getPath($id),
 		));
 	}
 

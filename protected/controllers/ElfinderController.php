@@ -19,10 +19,13 @@ class ElfinderController extends CController
         	'pageConnector' => array(
         		'class' => 'ext.elFinder.ElFinderConnectorAction',
         		'settings' => array(
-        			'root' => Yii::getPathOfAlias('webroot') . '/files/'.$_GET['pageid'].'/',
+        			'root' => Yii::getPathOfAlias('webroot') . '/files/'.$_GET['pageid'].'/', //Set root to pageid folder 
         			'URL' => Yii::app()->baseUrl . '/files/'.$_GET['pageid'].'/',
         			'rootAlias' => Page::model()->findByPk($_GET['pageid'])->title,
-        			'mimeDetect' => 'none'
+        			'mimeDetect' => 'none',
+                    /**
+                    * @todo personaliser les droits d'acces, supprimer le bouton favoris,
+                    */
         				)
         		),
         );

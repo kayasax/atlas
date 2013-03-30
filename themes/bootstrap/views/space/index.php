@@ -2,6 +2,7 @@
 /* @var $this SpaceController */
 /* @var $dataProvider CActiveDataProvider */
 
+
 $this->breadcrumbs=array(
 	'Espaces',
 );

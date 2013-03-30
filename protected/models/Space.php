@@ -30,6 +30,38 @@ class Space extends CActiveRecord
 	}
 
 	/*
+	* returns the space path (root/childspace/....) for breadcrumb
+	*/
+	public static function getPath($id){
+		$_name=null;
+		$_id=$id;
+		$path=array();
+		$criteria = new CDbCriteria;
+		$cpt=1;
+
+		//*
+		while( $_name!='Root' ){
+			$criteria->select = 'idspace, name,parent'; 
+			$criteria->condition ="idspace=$_id";
+			$p=Space::model()->find($criteria);
+			//var_dump($p->parent);
+			if ($cpt==1){ //no link for current space name
+				$path+= array($p->name ) ;	
+			}
+			else{
+				$path+= array($p->name =>array('/space/view','id'=>$p->idspace)) ;	
+			}
+			
+			$_id=$p->parent;
+			$_name=$p->name;
+			$cpt++;
+			//Yii::app()->end();
+		//*/
+		}
+		$path+=array('Espaces'=>array('/space/index'));
+		return array_reverse($path);
+	}
+	/*
 	* return the parents (space list)
 	*/
 	public static function getParents(){

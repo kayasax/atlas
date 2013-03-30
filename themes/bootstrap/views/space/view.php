@@ -1,11 +1,9 @@
 <?php
 /* @var $this SpaceController */
 /* @var $model Space */
+//var_dump(array_reverse($path));
+$this->breadcrumbs=$path;//$model->name,
 
-$this->breadcrumbs=array(
-	'Espaces'=>array('index'),
-	$model->name,
-);
 
 $this->menu=array(
 	array('label'=>'List Space', 'url'=>array('index')),

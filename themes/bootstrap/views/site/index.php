@@ -17,7 +17,7 @@ $this->pageTitle=Yii::app()->name;
         ),*/
     )); 
 ?>
-<div class='jumbotron'>
+<div class='well'>
 	<div class='container'>
 		<div class='row'>
 			<div class='span2'><?php echo CHtml::image(Yii::app()->request->baseUrl."/images/logo.jpg","logo Atlas"); ?></div>
@@ -27,7 +27,7 @@ $this->pageTitle=Yii::app()->name;
 
 				<div class='row'>
 					<br/><br/>
-					<div class='well blockquote pull-right'><em>Mieux vaut savoit tout chercher que chercher à tout savoir...</em></div>
+					<div class='label label-info pull-right shadow'><h3><em>Mieux vaut savoir tout chercher que chercher à tout savoir...</em></h3></div>
 				</div>		
 			</div>
 		</div>
