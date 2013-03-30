@@ -13,10 +13,33 @@ $this->menu=array(
 );
 ?>
 
-<h1>Liste des espaces</h1>
+<h2>Liste des espaces</h2>
 
+
+
+
+<?php  $this->renderPartial('_inlineSearch',array(
+    'model'=>$model,
+)); ?>
+
+
+
+<?php $this->widget('zii.widgets.CListView', array(
+    'dataProvider'=>$dataProvider->search(),
+    'itemView'=>'_view',
+    'id'=>'spaceview',       // must have id corresponding to js above
+    'sortableAttributes'=>array(
+        'name',
+        'description',
+        'createdby',
+        'creationdate',
+    ),
+)); 
+?>
 
 <?php
+
+/** ok avec grid view
 $this->widget('zii.widgets.Grid.CGridView', array(
 	'dataProvider'=>$model->with('creator')->search(),
 	'filter'=>$model,
@@ -25,14 +48,12 @@ $this->widget('zii.widgets.Grid.CGridView', array(
 			'type'=>'raw',
 			'header'=>'Nom',
 			'name'=>'name',
-			'value'=>'CHtml::Link( $data->name,"space/".$data->idspace)',
-		),
-		
-		//'parent',
+			'value'=>'CHtml::Link( $data->name,array("/".Yii::app()->controller->id."/view", "id"=>$data->idspace))',//,$this->createUrl("/space/")',//.$data->idspace)',
+		),	
 		'description',
-		//'createdby',
+		array('name'=>'createdby','value'=>'$data->creator->username'),
 		'creationdate',
-),
+	),
 		/*
 		 'lasttouched',
 'status',
@@ -40,6 +61,6 @@ $this->widget('zii.widgets.Grid.CGridView', array(
 	'sortableAttributes'=>array(
 		'name',
 		'creationdate'
-	),*/
-	
-)); ?>
+	),*/	
+//)); ?>
+

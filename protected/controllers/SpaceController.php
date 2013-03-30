@@ -159,11 +159,11 @@ class SpaceController extends Controller
 	{
 		//die(var_dump($search->search()));
 		
-		$dataProvider=new CActiveDataProvider('Space',array(
+		/*$dataProvider=new CActiveDataProvider('Space',array(
 		'criteria'=>array('with'=>'creator'),
         'pagination'=>array(
                 'pageSize'=>5,
-        ),));
+        ),));*/
 		
 		$model=new Space('search');
 		$model->unsetAttributes();  // clear any default values
@@ -172,7 +172,7 @@ class SpaceController extends Controller
 			
 		
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'dataProvider'=>$model,
 			'model'=>$model
 			
 		));

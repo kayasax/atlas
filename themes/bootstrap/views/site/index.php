@@ -27,7 +27,7 @@ $this->pageTitle=Yii::app()->name;
 
 				<div class='row'>
 					<br/><br/>
-					<div class='label label-info pull-right shadow'><h3><em>Mieux vaut savoir tout chercher que chercher à tout savoir...</em></h3></div>
+					<div class='label label-info pull-right shadow'><h4><em>Mieux vaut savoir tout chercher que chercher à tout savoir...</em></h4></div>
 				</div>		
 			</div>
 		</div>

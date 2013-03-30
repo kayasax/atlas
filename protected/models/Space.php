@@ -58,7 +58,7 @@ class Space extends CActiveRecord
 			//Yii::app()->end();
 		//*/
 		}
-		$path+=array('Espaces'=>array('/space/index'));
+		$path+=array('Espaces'=>array('/space'));
 		return array_reverse($path);
 	}
 	/*

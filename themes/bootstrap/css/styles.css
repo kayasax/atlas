@@ -20,10 +20,11 @@
 }
 
 .box{
+  border: solid 1px #0088cc;
   padding: 6px;
   margin-bottom: 5px;
   color: inherit;
-  background-color: #eeeeee;
+  background-color: #ffffff;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
