@@ -103,6 +103,19 @@ class Page extends CActiveRecord
 	}
 
 	/**
+	* Events this model can rise
+	**/
+	public function onNewPage($event){
+		$this->raiseEvent('onNewPage',$event);
+	}
+
+	public function onUpdatePage($event){
+		$this->raiseEvent('onUpdatePage',$event);
+	}
+
+
+
+	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */
@@ -163,6 +176,14 @@ class Page extends CActiveRecord
 	{
    	parent::afterSave();
     Tag::model()->updateFrequency($this->_oldTags, $this->tags);
+	
+    if ($this->isNewRecord) {
+        $event = new CModelEvent($this);
+    	$this->onNewPage($event); 
+    }
+ 		$event = new CModelEvent($this);
+    	$this->onUpdatePage($event); 
+    
 	}	
  
 	private $_oldTags;
@@ -178,4 +199,6 @@ class Page extends CActiveRecord
     parent::afterDelete();
     Tag::model()->updateFrequency($this->tags, '');
 	}
+
+	
 }

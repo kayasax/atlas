@@ -1,6 +1,6 @@
 <?php
 
-class PageController extends Controller
+class ActivityController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -37,7 +37,7 @@ class PageController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('loic'),
+				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -62,29 +62,20 @@ class PageController extends Controller
 	 */
 	public function actionCreate()
 	{
-
-		$model=new Page;
-		
+		$model=new Activity;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Page']))
+		if(isset($_POST['Activity']))
 		{
-
-			$model->attributes=$_POST['Page'];
-			// Execute the onNewPage event handlers
-			$model->onNewPage =array(new EventCollector(), 'PageCreated');
-
-			if($model->save()){
-				$this->redirect(array('view','id'=>$model->idpage));
-				}
+			$model->attributes=$_POST['Activity'];
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->id));
 		}
-		
-		Yii::app()->user->setFlash('warning', 'Les champs avec <span class="required">*</span> sont obligatoires');
+
 		$this->render('create',array(
 			'model'=>$model,
-			
 		));
 	}
 
@@ -100,14 +91,11 @@ class PageController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Page']))
+		if(isset($_POST['Activity']))
 		{
-			// Execute the onNewPage event handlers
-			$model->onUpdatePage =array(new EventCollector(), 'PageUpdated');
-
-			$model->attributes=$_POST['Page'];
+			$model->attributes=$_POST['Activity'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->idpage));
+				$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('update',array(
@@ -134,17 +122,7 @@ class PageController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$criteria=new CDbCriteria();
-    	if(isset($_GET['tag']))
-        $criteria->addSearchCondition('tags',$_GET['tag']);
-
-
-		$dataProvider=new CActiveDataProvider('Page',array(
-			'pagination'=>array(
-				'pagesize'=>20,
-			),
-			'criteria'=>$criteria,
-		));
+		$dataProvider=new CActiveDataProvider('Activity');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -155,10 +133,10 @@ class PageController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Page('search');
+		$model=new Activity('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Page']))
-			$model->attributes=$_GET['Page'];
+		if(isset($_GET['Activity']))
+			$model->attributes=$_GET['Activity'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -169,13 +147,12 @@ class PageController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Page the loaded model
+	 * @return Activity the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		//$model=Page::model()->with('author0')->findByPk($id);
-		$model=Page::model()->with('space0',"author0","files")->findByPk($id); //,'author0'
+		$model=Activity::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -183,11 +160,11 @@ class PageController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Page $model the model to be validated
+	 * @param Activity $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='page-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='activity-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
