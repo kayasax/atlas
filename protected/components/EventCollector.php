@@ -22,7 +22,7 @@ class EventCollector
 	public function pageCreated($event){	
 		
 		$type='une page';
-		$operation='créée';
+		$operation='créé';
 		$url="<a href='".Yii::app()->controller->createUrl('page/view',array('id'=>$event->sender->idpage))."'>".$event->sender->title."</a>";
 		$this->updateActivity($type,$operation,$url);
 		
@@ -31,7 +31,7 @@ class EventCollector
 	public function pageUpdated($event){	
 		
 		$type='la page';
-		$operation='modifiée';
+		$operation='modifié';
 		$url="<a href='".Yii::app()->controller->createUrl('page/view',array('id'=>$event->sender->idpage))."'>".$event->sender->title."</a>";
 		$this->updateActivity($type,$operation,$url);
 		
