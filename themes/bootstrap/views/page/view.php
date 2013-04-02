@@ -10,13 +10,6 @@ $this->breadcrumbs=array(
 
 Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/page.js',CClientScript::POS_END);
 
-$this->menu=array(
-	array('label'=>'List Page', 'url'=>array('index')),
-	array('label'=>'Create Page', 'url'=>array('create')),
-	array('label'=>'Update Page', 'url'=>array('update', 'id'=>$model->idpage)),
-	array('label'=>'Delete Page', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idpage),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Page', 'url'=>array('admin')),
-);
 ?>
 
 <div class='well'>
@@ -26,7 +19,8 @@ $this->menu=array(
 			<ul class='unstyled'>
 				<li><small> <i class='icon-user' title='auteur'></i> <?php echo $model->author0->userprofile->firstname;?></small></li>
 				<li><small> <i class='icon-time' title='Créé le'></i>  <?php echo $model->creationdate;?> </small></li>
-				<li><small> <i class='icon-pencil' title='Dernière modification'></i>  <?php echo $model->lasttouched;?> 
+				<li><small> <i class='icon-pencil' title='Dernière modification'></i>  <?php echo $model->lasttouched;?> </small></li>
+					<li><small> <?php $this->widget('score',array('id'=>$model->idpage))?> </small></li>
 			</ul>
 		</div>
 	</div> <!-- / row -->
