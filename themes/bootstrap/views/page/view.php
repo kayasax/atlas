@@ -14,7 +14,7 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/page.js'
 
 <div class='well'>
 	<div class='row'>
-		<div class='span6'><h2><?php echo $model->title; ?></h2><h5><?php echo $model->intro; ?></h5></div>
+		<div class='span6'><h3><?php echo $model->title; ?></h3><h5><?php echo $model->intro; ?></h5></div>
 		<div class='span2'> 
 			<ul class='unstyled'>
 				<li><small> <i class='icon-user' title='auteur'></i> <?php echo $model->author0->userprofile->firstname;?></small></li>
@@ -28,7 +28,7 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/page.js'
 
 	<div class='row'>
 		<div class='span8'>
-			<a href='#' id='showFile'><i class='icon-paper-clip icon-2x'></i> Voir les fichiers attachés (<?php echo $model->nbFiles;?>)</a>
+			<a href='#' id='showFile' class='btn btn-primary <?php if( $model->nbFiles==0){echo "disabled";} ?>'><i class='icon-paper-clip icon-2x'></i> Voir les fichiers attachés (<?php echo $model->nbFiles;?>)</a>
 			<div id='files' style='display:none'>
 			<?php $this->widget('ext.elFinder.ElFinderWidget', array(
 		        'connectorRoute' => 'Elfinder/pageConnector/',
