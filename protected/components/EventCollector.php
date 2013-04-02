@@ -2,7 +2,8 @@
 /**
 * Gestion des événements transmis par les composants
 **/
-class EventCollector  
+
+class EventCollector
 {
 
 	/**
@@ -33,6 +34,27 @@ class EventCollector
 		$type='la page';
 		$operation='modifié';
 		$url="<a href='".Yii::app()->controller->createUrl('page/view',array('id'=>$event->sender->idpage))."'>".$event->sender->title."</a>";
+		$this->updateActivity($type,$operation,$url);
+		
+	}
+
+
+	public function SpaceCreated($event){	
+		
+		$type='un espace';
+		$operation='créé';
+		$url="<a href='".Yii::app()->controller->createUrl('space/view',array('id'=>$event->sender->idspace))."'>".$event->sender->name."</a>"; //.$event->sender->idspace.   
+		$this->updateActivity($type,$operation,$url);
+		echo "test";
+		
+		
+	}
+
+	public function SpaceUpdated($event){	
+		
+		$type='l\'espace';
+		$operation='modifié';
+		$url="<a href='".Yii::app()->controller->createUrl('space/view',array('id'=>$event->sender->idspace))."'>".$event->sender->name."</a>";
 		$this->updateActivity($type,$operation,$url);
 		
 	}

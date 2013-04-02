@@ -3,7 +3,7 @@
 /* @var $model Userprofile */
 
 $this->breadcrumbs=array(
-	'Userprofiles'=>array('index'),
+	'Profile'=>array('index'),
 	$model->iduser,
 );
 

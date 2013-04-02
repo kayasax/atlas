@@ -58,7 +58,7 @@ class SpaceController extends Controller
 				'criteria'=>array(
 					'condition'=>"space=$id",
 					'order'=>'creationdate DESC',		
-					'with'=>'author0',
+					'with'=>array('author0','author0.userprofile'),
 				),
 				'pagination'=>array(
 						'pageSize'=>5,
@@ -92,7 +92,7 @@ class SpaceController extends Controller
 	public function actionCreate()
 	{
 		$model=new Space;
-
+		//Yii::import('application.components.eventCollector',true);
 		
 			
 		// Uncomment the following line if AJAX validation is needed
@@ -100,6 +100,14 @@ class SpaceController extends Controller
 
 		if(isset($_POST['Space']))
 		{
+			
+			
+			//$test->SpaceCreated();
+		
+
+			// Execute the onNewPage event handlers
+			$model->onNewSpace =array(new EventCollector(), 'SpaceCreated');
+
 			$model->attributes=$_POST['Space'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->idspace));
@@ -128,6 +136,10 @@ class SpaceController extends Controller
 		if(isset($_POST['Space']))
 		{
 			$model->attributes=$_POST['Space'];
+
+			// Execute the onNewPage event handlers
+			$model->onUpdateSpace =array(new EventCollector(), 'SpaceUpdated');
+
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->idspace));
 		}
@@ -172,8 +184,8 @@ class SpaceController extends Controller
 			
 		
 		$this->render('index',array(
-			'dataProvider'=>$model,
-			'model'=>$model
+			//'dataProvider'=>$dataProvider,
+			'model'=>$model->with('creator')
 			
 		));
 	}

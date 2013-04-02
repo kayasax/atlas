@@ -25,7 +25,7 @@ $this->menu=array(
 
 
 <?php $this->widget('zii.widgets.CListView', array(
-    'dataProvider'=>$dataProvider->search(),
+    'dataProvider'=>$model->search(),
     'itemView'=>'_view',
     'id'=>'spaceview',       // must have id corresponding to js above
     'sortableAttributes'=>array(

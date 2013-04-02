@@ -153,6 +153,18 @@ class Space extends CActiveRecord
 	}
 
 	/**
+	* Events this model can rise
+	**/
+	public function onNewSpace($event){
+		$this->raiseEvent('onNewSpace',$event);
+	}
+
+	public function onUpdateSpace($event){
+		$this->raiseEvent('onUpdateSpace',$event);
+	}
+
+
+	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */
@@ -171,6 +183,7 @@ class Space extends CActiveRecord
 		$criteria->compare('creationdate',$this->creationdate,true);
 		/*$criteria->compare('lasttouched',$this->lasttouched,true);
 		$criteria->compare('status',$this->status,true);*/
+		$criteria->with='creator';
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -194,4 +207,17 @@ class Space extends CActiveRecord
 	    else
 	        return false;
 	}
+
+	protected function afterSave()
+	{
+   	parent::afterSave();
+    	
+    if ($this->isNewRecord) {
+        $event = new CModelEvent($this);
+    	$this->onNewSpace($event); 
+    }
+ 		$event = new CModelEvent($this);
+    	$this->onUpdateSpace($event); 
+    
+	}	
 }

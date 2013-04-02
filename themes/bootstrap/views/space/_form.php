@@ -34,9 +34,7 @@
 	<?php echo $form->error($model,'status'); ?>
 
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
+	<br/><?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'primary', 'label'=>$model->isNewRecord ? 'Créer' : 'Enregistrer',  'icon'=>'ok')); ?>
 
 <?php $this->endWidget(); ?>
 
