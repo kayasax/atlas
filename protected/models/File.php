@@ -86,6 +86,17 @@ class File extends CActiveRecord
 		);
 	}
 
+	
+	/**
+	 * Events this model can rise
+	 **/
+	public function onNewFile($event){
+		$this->raiseEvent('onNewFile',$event);
+	}
+	
+	
+	
+	
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
@@ -126,5 +137,18 @@ class File extends CActiveRecord
 	    else
 	        return false;
 		
+	}
+	
+	protected function afterSave()
+	{
+		parent::afterSave();
+		 
+		if ($this->isNewRecord) {
+			$event = new CModelEvent($this);
+			$this->onNewFile($event);
+		}
+		/*$event = new CModelEvent($this);
+		$this->onUpdateSpace($event);*/
+	
 	}
 }

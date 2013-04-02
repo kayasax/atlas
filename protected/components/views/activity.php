@@ -1,4 +1,4 @@
-<ul style='unstyled'>
+<ul class='unstyled'>
 <?php
 			$this->widget('zii.widgets.CListView', array(
 				'dataProvider'=>$dataProvider,

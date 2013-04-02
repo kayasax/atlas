@@ -92,19 +92,13 @@ class SpaceController extends Controller
 	public function actionCreate()
 	{
 		$model=new Space;
-		//Yii::import('application.components.eventCollector',true);
-		
-			
+					
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Space']))
 		{
-			
-			
-			//$test->SpaceCreated();
 		
-
 			// Execute the onNewPage event handlers
 			$model->onNewSpace =array(new EventCollector(), 'SpaceCreated');
 
