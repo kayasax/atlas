@@ -54,7 +54,7 @@ class Page extends CActiveRecord
 			array('space, status', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>100),
 			array('tags', 'length', 'max'=>128),
-			 array('tags', 'match', 'pattern'=>'/^[\w\s,]+$/',
+			 array('tags', 'match', 'pattern'=>'/^[\w\s,]+$/u',
             'message'=>'Les tags ne peuvent contenir que des lettres.'),
         	array('tags', 'normalizeTags'),
 			array('version', 'length', 'max'=>5),
