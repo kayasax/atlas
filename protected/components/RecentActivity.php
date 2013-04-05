@@ -30,9 +30,11 @@ class RecentActivity extends CPortlet
 
 		));
 		
-        $this->render('activity',array(
-			'dataProvider'=>$dataProvider,
-			));
+        $this->widget('zii.widgets.CListView', array(
+				'dataProvider'=>$dataProvider,
+				'itemView'=>'_activity',
+				
+		));
     }
 }
 ?>

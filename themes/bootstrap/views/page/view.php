@@ -1,27 +1,69 @@
 <?php
 /* @var $this PageController */
 /* @var $model Page */
+$path=Space::getPath($model->space0->idspace,true);
+$path[]="$model->title";
+   
+$this->breadcrumbs=$path;
 
-$this->breadcrumbs=array(
+/*$this->breadcrumbs=array(
 	$model->space0->name=>array('space/view/','id'=>$model->space0->idspace),
 	'Pages'=>array('index'),
 	$model->title,
-);
+);*/
 
 Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/page.js',CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile("https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js");
 
 ?>
 
 <div class='well'>
-	<div class='row'>
+    <div class='row'>
 		<div class='span6'><h3><?php echo $model->title; ?></h3><h5><?php echo $model->intro; ?></h5></div>
 		<div class='span2'> 
-			<ul class='unstyled'>
+                    <?php $favs=explode(',',User::model()->with('userprofile')->findByPk(Yii::app()->user->id)->userprofile->favorites);
+                    if(in_array($model->idpage, $favs)){
+                        $icon='icon-heart';
+                        $title='Cliquer pour supprimer cette page de vos favoris';
+                    }
+                    else{
+                        $icon='icon-heart-empty';
+                        $title='Cliquer pour ajouter cette page à vos favoris';
+                    }
+                    ?>
+                    
+                    <p class='pull-right'><?php echo CHtml::ajaxLink("<i class='".$icon."' id='favIcon'></i>", Yii::app()->createUrl("ajax/addToFav"), 
+                        array(
+                        'update'=>'#favMessage',
+                        'data'=>array('id'=>$model->idpage),
+                        'type'=>'post',
+                        'success'=>'function($data){
+                            $("#favMessage").html($data);
+                            if($("#favIcon").hasClass("icon-heart-empty")){
+                                $("#favIcon").removeClass("icon-heart-empty").addClass("icon-heart")
+                            } 
+                            else{
+                               $("#favIcon").removeClass("icon-heart").addClass("icon-heart-empty")
+                            }
+                         }
+                         '
+                         ),
+                         
+                        array(
+                        'id'=>'favLink',
+                        'title'=>$title,
+                        'class'=>'',
+                        'style'=>'color:red',
+                ));?></p>
+                    <div id='favMessage'></div>
+                    <p class='clearfix'>
+			<ul class='unstyled '>
 				<li><small> <i class='icon-user' title='auteur'></i> <?php echo $model->author0->userprofile->firstname;?></small></li>
 				<li><small> <i class='icon-time' title='Créé le'></i>  <?php echo $model->creationdate;?> </small></li>
 				<li><small> <i class='icon-pencil' title='Dernière modification'></i>  <?php echo $model->lasttouched;?> </small></li>
 					<li><small> <?php $this->widget('score',array('id'=>$model->idpage))?> </small></li>
 			</ul>
+                </p>
 		</div>
 	</div> <!-- / row -->
 	

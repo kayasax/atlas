@@ -29,7 +29,7 @@ class AjaxController extends Controller {
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'voteUp', 'voteDown'),
+                'actions' => array('create', 'update', 'voteUp', 'voteDown','addToFav'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -77,4 +77,17 @@ class AjaxController extends Controller {
         Yii::app()->end();
     }
 
+    public function actionaddToFav(){
+        $profile=Userprofile::model()->findByPk(Yii::app()->user->id );
+        //echo 'fav : '.$profile->favorites;
+        $fav=$profile->favorites;
+        if($fav==NULL){
+            $profile->favorites = $_POST['id'];
+            $profile->save();
+            echo "<p class='alert alert-success'>Page ajoutée à vos favoris</p>";
+        }
+        
+        ECHO '<p class="alert alert-success">toggle fav for '.Yii::app()->user->id .'and id='.$_POST['id'].'</p>';
+        Yii::app()->end();
+    }
 }

@@ -1,6 +1,6 @@
 <?php /* @var $this Controller */ ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" >
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="fr" />
@@ -18,7 +18,7 @@
 	
 </head>
 
-<body>
+<body style='background-image: url("<?php echo Yii::app()->baseUrl; ?>/images/carbon_fibre.png"); )' >
 
 <?php $this->widget('bootstrap.widgets.TbNavbar',array(
     'items'=>array(

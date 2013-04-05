@@ -29,7 +29,7 @@ $('.search-form form').submit(function(){
 $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'id'=>'inlineForm',
     'type'=>'inline',
-    'htmlOptions'=>array('class'=>'box'),
+    'htmlOptions'=>array(),
 )); ?>
  
 <?php echo $form->textFieldRow($model, 'name', array('class'=>'input-small')); ?> 

@@ -32,7 +32,7 @@ class Space extends CActiveRecord
 	/*
 	* returns the space path (root/childspace/....) for breadcrumb
 	*/
-	public static function getPath($id){
+	public static function getPath($id,$full=false){
 		$_name=null;
 		$_id=$id;
 		$path=array();
@@ -45,7 +45,8 @@ class Space extends CActiveRecord
 			$criteria->condition ="idspace=$_id";
 			$p=Space::model()->find($criteria);
 			//var_dump($p->parent);
-			if ($cpt==1){ //no link for current space name
+			
+                        if ($cpt==1 && $full==false){ //no link for current space name
 				$path+= array($p->name ) ;	
 			}
 			else{

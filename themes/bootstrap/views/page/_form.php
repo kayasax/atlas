@@ -70,7 +70,7 @@ $this->widget('ext.tinymce.TinyMce', array(
 
 		// Style formats
 		'style_formats'=>array(
-			array('title'=> 'Accentuation', 'inline'=> 'b'),
+			array('title'=> 'Entête', 'block'=> 'p','classes'=>'lead'),
 			array('title'=> 'Label', 'inline'=> 'span','classes'=>'label'),
 			array('title'=> 'Label Success', 'inline'=> 'span','classes'=>'label label-success'),
 			array('title'=> 'Label Warning', 'inline'=> 'span','classes'=>'label label-warning'),
@@ -79,6 +79,8 @@ $this->widget('ext.tinymce.TinyMce', array(
 			array('title'=> 'Alerte', 'inline'=> 'span','classes'=>'alert'),
 			array('title'=> 'Alerte erreur', 'inline'=> 'span','classes'=>'alert alert-error'),
 			array('title'=> 'Icone', 'inline'=> 'i','classes'=>'icon-warning-sign'),
+                    	array('title'=> 'Code', 'block'=> 'pre','classes'=>'prettyprint'),
+                    	array('title'=> 'Code numéroté', 'block'=> 'pre','classes'=>'prettyprint linenums'),
 
 
 

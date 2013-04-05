@@ -10,6 +10,7 @@
  * @property string $email
  * @property integer $status
  * @property string $lastseen
+ * @property string $favorites
  *
  * The followings are the available model relations:
  * @property User $iduser0
@@ -76,6 +77,7 @@ class Userprofile extends CActiveRecord
 			'email' => 'Adresse Email',
 			'status' => 'Statut',
 			'lastseen' => 'Lastseen',
+                        'favorites'=>'Favoris'
 		);
 	}
 

@@ -193,4 +193,11 @@ class PageController extends Controller
 			Yii::app()->end();
 		}
 	}
+        
+        /**
+         * Add or remove page to the favorites
+         */
+        public function addToFav(){
+            return 'this is fav';
+        }
 }

@@ -13,7 +13,7 @@ $this->menu=array(
 );
 ?>
 
-<h2>Liste des espaces</h2>
+<h3 class='clean'>Liste des espaces</h3>
 
 
 
