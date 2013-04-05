@@ -27,7 +27,7 @@ $this->pageTitle=Yii::app()->name;
 
 				<div class='row'>
 					<br/><br/>
-					<div class='label label-info pull-right shadow'><h4><em>Mieux vaut savoir tout chercher que chercher à tout savoir...</em></h4></div>
+					<div class='label label-info pull-right '><h4><em>Mieux vaut savoir tout chercher que chercher à tout savoir...</em></h4></div>
 				</div>		
 			</div>
 		</div>
@@ -84,18 +84,14 @@ $this->pageTitle=Yii::app()->name;
 <div class='row'>
 
 <div class='span6'>
-	<div class='widget '>
-	<div class='widget-header'> <h3><i class='icon-file'></i>&nbsp;   Dernières modifications</h3></div>
-	<div class='widget-content'>
-			<ul class='unstyled'>
-				<li><?php echo CHtml::link('test',CHtml::normalizeUrl(array('page/6'))); ?></li>
-				<li>test2</li>
-			</ul>
-	</div>
-	</div>
+			<?php $this->widget('Leaderboard');?>
 </div>
 
+<div class='span6'>
+			<?php $this->widget('TagCloud');?>
+</div>
 
+</div> <!-- row-->
 <div class='span6'>
 	<div class='widget '>
 	<div class='widget-header'> <h3><i class='icon-file'></i>&nbsp;   Statistiques </h3></div>
@@ -107,4 +103,3 @@ $this->pageTitle=Yii::app()->name;
 	</div>
 	</div>
 </div>
-</div> <!-- row-->

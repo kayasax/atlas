@@ -68,7 +68,7 @@ class Score extends CPortlet
         		$("#voteUpLink")
                             .addClass("disabled")
                             .css("color","green")
-                            .click(function(){return false;})
+                            .click(function(){return true;})
                             .attr("title","Vous avez déjà voté");
                         $("#voteDownLink")
                             .removeClass("disabled")
@@ -142,7 +142,7 @@ class Score extends CPortlet
         		$("#voteDownLink")
                             .addClass("disabled")
                             .css("color","red")
-                            .click(function(){return false;})
+                            .click(function(){return true;})
                             .attr("title","Vous avez déjà voté");
                         $("#voteUpLink")
                             .removeClass("disabled")
