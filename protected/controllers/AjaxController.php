@@ -79,15 +79,30 @@ class AjaxController extends Controller {
 
     public function actionaddToFav(){
         $profile=Userprofile::model()->findByPk(Yii::app()->user->id );
-        //echo 'fav : '.$profile->favorites;
-        $fav=$profile->favorites;
-        if($fav==NULL){
-            $profile->favorites = $_POST['id'];
-            $profile->save();
-            echo "<p class='alert alert-success'>Page ajoutée à vos favoris</p>";
-        }
         
-        ECHO '<p class="alert alert-success">toggle fav for '.Yii::app()->user->id .'and id='.$_POST['id'].'</p>';
+        $f= array_filter(explode(',', $profile->favorites));
+        
+        if(in_array($_POST['id'], $f)){
+            $f=  array_diff($f, array($_POST['id']));
+            $favorites=(implode(',', $f));
+            $profile->favorites=$favorites;
+            $profile->save();
+            echo'<div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <i class="icon-ok"></i>&nbsp;Supprimée des favoris.
+            </div>';
+            
+        }
+        else{
+           $profile->favorites.=",".$_POST['id'];
+           $profile->save();
+           echo'<div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <i class="icon-ok"></i>&nbsp;Ajoutée aux favoris.
+            </div>';
+        }
+               
+        
         Yii::app()->end();
     }
 }

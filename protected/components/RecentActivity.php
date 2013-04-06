@@ -29,12 +29,13 @@ class RecentActivity extends CPortlet
 				),
 
 		));
-		
+		echo"<ul class='unstyled' ";
         $this->widget('zii.widgets.CListView', array(
 				'dataProvider'=>$dataProvider,
 				'itemView'=>'_activity',
 				
 		));
+        echo"</ul>";
     }
 }
 ?>

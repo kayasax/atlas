@@ -40,10 +40,12 @@ Yii::app()->clientScript->registerScriptFile("https://google-code-prettify.googl
                         'success'=>'function($data){
                             $("#favMessage").html($data);
                             if($("#favIcon").hasClass("icon-heart-empty")){
-                                $("#favIcon").removeClass("icon-heart-empty").addClass("icon-heart")
+                                $("#favIcon").removeClass("icon-heart-empty").addClass("icon-heart");
+                                $("#favLink").attr("title","Cliquer pour supprimer cette page de vos favoris");
                             } 
                             else{
                                $("#favIcon").removeClass("icon-heart").addClass("icon-heart-empty")
+                               $("#favLink").attr("title","Cliquer pour ajouter cette page à vos favoris");
                             }
                          }
                          '

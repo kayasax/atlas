@@ -56,16 +56,7 @@ $this->pageTitle=Yii::app()->name;
 
 <div class='row'>
     <div class='span6'>
-        <div class='widget '>
-            <div class='widget-header'> <h3><i class='icon-heart'></i>&nbsp;  Mes favoris </h3></div>
-            <div class='widget-content'>
-                <ul class='unstyled'>
-                    <li><?php echo CHtml::link('Changelog',CHtml::normalizeUrl(array('page/7'))); ?></li>
-                    <li>test2</li>
-                </ul>
-
-            </div>
-            </div>
+        <?php $this->widget('Favorites');?>
     </div> <!-- /span6-->
     <div class='span6'>
         <div class='widget '>
