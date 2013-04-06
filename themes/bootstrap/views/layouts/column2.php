@@ -12,7 +12,7 @@
         
             <?php $this->widget('userMenu'); ?>
             <?php $this->widget('TagCloud', array( 'maxTags'=>20,)); //Yii::app()->params['tagCloudCount'],  ?> 
-    
+            <?php $this->widget('SearchBlock', array()); //Yii::app()->params['tagCloudCount'],  ?> 
         </div><!-- sidebar -->
     </div>
 </div>

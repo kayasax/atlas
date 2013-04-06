@@ -77,7 +77,7 @@ $this->pageTitle=Yii::app()->name;
             <?php $this->widget('TagCloud');?>
     </div>
 </div> <!-- row-->
-
+<div class='row'>
 <div class='span6'>
 	<div class='widget '>
 	<div class='widget-header'> <h3><i class='icon-file'></i>&nbsp;   Statistiques </h3></div>

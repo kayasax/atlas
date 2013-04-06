@@ -43,13 +43,14 @@ $this->widget('ext.tinymce.TinyMce', array(
     
     'attribute' => 'content',
     // Optional config
-    'compressorRoute' => 'tinyMce/compressor',
+    'compressorRoute' => 'tinyMce/compressor/',
     //'spellcheckerUrl' => array('tinyMce/spellchecker'),
     // or use yandex spell: http://api.yandex.ru/speller/doc/dg/tasks/how-to-spellcheck-tinymce.xml
     //'spellcheckerUrl' => 'http://speller.yandex.net/services/tinyspell',
     'fileManager' => array(
         'class' => 'ext.elFinder.TinyMceElFinder',
-        'connectorRoute'=>'elfinder/connector',
+        'connectorRoute'=>'elfinder/pageConnector/?pageid='.$_GET['id'],
+        
     ),
     'htmlOptions' => array(
         'rows' => 6,

@@ -7,6 +7,7 @@ class TinyMceElFinder extends TinyMceFileManager
     public $settings = array();
     public $connectorRoute = false;
     private $assetsDir;
+    public $data=array();
 
     private $_id;
     private static $_counter = 0;
@@ -61,6 +62,8 @@ class TinyMceElFinder extends TinyMceFileManager
             throw new CException('$connectorRoute must be set!');
         $this->settings['url'] = Yii::app()->createUrl($this->connectorRoute);
         $this->settings['lang'] = Yii::app()->language;
+      
+        
     }
 
     public function getId()
@@ -76,6 +79,7 @@ class TinyMceElFinder extends TinyMceFileManager
         $connectorUrl = $this->settings['url'];
         $id = $this->getId();
         $settings = array_merge(array(
+            'data'=>$this->data,
                 'places' => "",
                 'rememberLastDir' => false,),
             $this->settings

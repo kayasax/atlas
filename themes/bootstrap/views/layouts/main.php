@@ -30,9 +30,12 @@
                 array('label'=>'A propos', 'url'=>array('/site/page', 'view'=>'about')),
                 array('label'=>'Contact', 'url'=>array('/site/contact')),
                 array('label'=>'Connexion', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-                array('label'=>'Déconnexion ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+                array('label'=>'Déconnexion ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
+                
             ),
         ),
+        '<form class="navbar-search pull-left" action="'.Yii::app()->createUrl('search/search').'">
+            <input type="text" name="q" id="q" class="search-query span2" placeholder="Search"></form>',
     ),
 )); ?>
 
