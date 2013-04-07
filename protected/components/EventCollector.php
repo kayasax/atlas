@@ -61,9 +61,9 @@ class EventCollector
 	
 	public function FileCreated($event){
 	
-		$type='un fichier';
+		$type='le fichier '.$event->sender->file;
 		$operation='ajouté';
-		$url="<a href='".Yii::app()->controller->createUrl('page/view',array('id'=>$event->sender->page))."'>sur cette page</a>";
+		$url="sur <a href='".Yii::app()->controller->createUrl('page/view',array('id'=>$event->sender->page))."'> cette page</a>";
 		$this->updateActivity($type,$operation,$url);
 	
 	}

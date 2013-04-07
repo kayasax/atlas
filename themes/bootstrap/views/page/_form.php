@@ -37,7 +37,8 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 <div class="tinymce">
 <?php echo $form->labelEx($model,'content'); ?>
 <?php
-
+// elfinder needs additional data to set the root folder based on space id but cant get the id when creating a new page
+ isset($_GET['id'])?$urlData="?pageid=".$_GET['id']:$urlData="";
 $this->widget('ext.tinymce.TinyMce', array(
     'model' => $model,
     
@@ -49,7 +50,7 @@ $this->widget('ext.tinymce.TinyMce', array(
     //'spellcheckerUrl' => 'http://speller.yandex.net/services/tinyspell',
     'fileManager' => array(
         'class' => 'ext.elFinder.TinyMceElFinder',
-        'connectorRoute'=>'elfinder/pageConnector/?pageid='.$_GET['id'],
+        'connectorRoute'=>'elfinder/pageConnector/'.$urlData,
         
     ),
     'htmlOptions' => array(

@@ -13,6 +13,7 @@ class SearchController extends Controller
     public function init(){
         //Yii::import('application.vendors.*');
         require_once('Zend/Search/Lucene.php');
+        setlocale(LC_ALL, 'fr_FR.iso-8859-1');
         parent::init(); 
     }
  
@@ -21,6 +22,7 @@ class SearchController extends Controller
      */
     public function actionCreate()
     {
+        
          $index = new Zend_Search_Lucene(Yii::getPathOfAlias('application.' . $this->_indexFiles), true);
  
         $pages = Page::model()->with('space0')->findAll();

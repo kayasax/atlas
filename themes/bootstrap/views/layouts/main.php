@@ -35,7 +35,7 @@
             ),
         ),
         '<form class="navbar-search pull-left" action="'.Yii::app()->createUrl('search/search').'">
-            <input type="text" name="q" id="q" class="search-query span2" placeholder="Search"></form>',
+            <input type="text" name="q" id="q" class="search-query span2" placeholder="Chercher"></form>',
     ),
 )); ?>
 

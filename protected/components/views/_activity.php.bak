@@ -1,1 +1,0 @@
-<li><?php echo $data->operator0->userprofile->firstname." ".$data->operator0->userprofile->firstname." a ".$data->operation." ".$data->type." ".$data->url;?></li>

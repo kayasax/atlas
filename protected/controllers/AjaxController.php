@@ -29,7 +29,7 @@ class AjaxController extends Controller {
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'voteUp', 'voteDown','addToFav'),
+                'actions' => array('create', 'update', 'voteUp', 'voteDown','addToFav','AjaxFillTree'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -104,5 +104,30 @@ class AjaxController extends Controller {
                
         
         Yii::app()->end();
+    }
+    
+     public function actionAjaxFillTree()
+    {
+        // accept only AJAX request (comment this when debugging)
+        if (!Yii::app()->request->isAjaxRequest) {
+            exit();
+        }
+        // parse the user input
+        $parentId = "0";
+        if (isset($_GET['root']) && $_GET['root'] !== 'source') {
+            $parentId = (int) $_GET['root'];
+        }
+        // read the data (this could be in a model)
+        $children = Yii::app()->db->createCommand(
+            "SELECT m1.idspace, m1.name AS text, m2.idspace IS NOT NULL AS hasChildren "
+            . "FROM space AS m1 LEFT JOIN space AS m2 ON m1.idspace=m2.parent "
+            . "WHERE m1.parent <=> $parentId "
+            . "GROUP BY m1.idspace ORDER BY m1.name ASC"
+        )->queryAll();
+        echo str_replace(
+            '"hasChildren":"0"',
+            '"hasChildren":false',
+            CTreeView::saveDataAsJson($children)
+        );
     }
 }
