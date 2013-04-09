@@ -56,7 +56,7 @@ $this->pageTitle=Yii::app()->name;
 
 <div class='row'>
     <div class='span6'>
-        <?php $this->widget('Favorites');?>
+        <?php if( !Yii::app()->user->isGuest) $this->widget('Favorites');?>
     </div> <!-- /span6-->
     <div class='span6'>
         <div class='widget '>
