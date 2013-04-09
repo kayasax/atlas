@@ -7,7 +7,7 @@ $this->breadcrumbs=array(
     'Résultats de la recherche',
 );
 ?>
-<h3 class='clean'>Résultats de la recherche pour : "<?php echo $term; ?>"</h3>
+<h3 class='clean'>Résultats de la recherche pour : "<?php echo $term; ?>" (<?php echo count($results) ?> trouvés)</h3>
 <div class='well '>
    
 
@@ -18,8 +18,8 @@ $this->breadcrumbs=array(
             <?php echo CHtml::link('<i class="'.$icons[$result->type].'"></i>'.$query->highlightMatches($result->title),Yii::app()->createUrl("$result->type/view",array('id'=>$result->_id))); ?>
             <?php echo "(". round($result->score*100) ."%)"?>
         </p>
-        <h5> <?php echo $result->link; ?></h5>
-        <small><?php echo $query->highlightMatches(CHtml::decode($result->content)); ?></small>                 
+        <h5> <?php echo $query->highlightMatches($result->intro); ?></h5>
+        <small><?php echo $query->highlightMatches($result->content); ?></small>                 
     </div>           
 <?php endforeach; ?>
 <?php else: ?>

@@ -26,8 +26,7 @@ $this->pageTitle=Yii::app()->name;
 				<p>le wiki et l'espace documentaire dédié au support SMAC</p>
 
 				<div class='row'>
-					<br/><br/>
-					<div class='label label-info pull-right '><h4><em>Mieux vaut savoir tout chercher que chercher à tout savoir...</em></h4></div>
+					<div class='  span5 label label-info pull-right '><h5><em>Mieux vaut savoir tout chercher que chercher à tout savoir...</em></h5></div>
 				</div>		
 			</div>
 		</div>
@@ -56,17 +55,11 @@ $this->pageTitle=Yii::app()->name;
 
 <div class='row'>
     <div class='span6'>
-        <?php $this->widget('Favorites');?>
+        <?php  $this->widget('TreeView');?>
     </div> <!-- /span6-->
     <div class='span6'>
-        <div class='widget '>
-        <div class='widget-header'> <h3> <i class='icon-calendar'></i>&nbsp; Activité récente</h3></div>
-        <div class='widget-content'>
-        <?php $this->widget('RecentActivity');?>
-
-        </div>
-        </div>
-    </div> <!-- /span6-->
+        <?php  $this->widget('Favorites');?>
+    </div> <!-- /span6-->    
 </div> <!-- row-->
 
 <div class='row'>
@@ -74,10 +67,18 @@ $this->pageTitle=Yii::app()->name;
           <?php $this->widget('Leaderboard');?>
     </div>
     <div class='span6'>
-            <?php $this->widget('TagCloud');?>
-    </div>
+        <div class='widget '>
+        <div class='widget-header'> <h3> <i class='icon-calendar'></i>&nbsp; Activité récente</h3></div>
+        <div class='widget-content'>
+            <?php $this->widget('RecentActivity');?>
+        </div>
+        </div>
+    </div> <!-- /span6-->
 </div> <!-- row-->
 <div class='row'>
+   <div class='span6'>
+            <?php $this->widget('TagCloud');?>
+    </div>
 <div class='span6'>
 	<div class='widget '>
 	<div class='widget-header'> <h3><i class='icon-file'></i>&nbsp;   Statistiques </h3></div>
@@ -89,3 +90,4 @@ $this->pageTitle=Yii::app()->name;
 	</div>
 	</div>
 </div>
+</div> <!-- /row -->
