@@ -78,10 +78,34 @@ class AjaxController extends Controller {
     }
 
     public function actionaddToFav(){
+              
         $profile=Userprofile::model()->findByPk(Yii::app()->user->id );
         
-        $f= array_filter(explode(',', $profile->favorites));
+        if($_POST['type']=='space'){
+            $f= array_filter(explode(',', $profile->spacefavs));
+            if(in_array($_POST['id'], $f)){
+                $f = array_diff($f, array($_POST['id']));
+                $favorites = (implode(',', $f));
+                $profile->spacefavs = $favorites;
+                $profile->save();
+                echo'<div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <i class="icon-ok"></i>&nbsp;Supprimée des favoris.
+            </div>';
+            }
+        else{
+           $profile->spacefavs.=",".$_POST['id'];
+           $profile->save();
+           echo'<div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <i class="icon-ok"></i>&nbsp;Ajoutée aux favoris.
+            </div>';
+        }
+        Yii::app()->end();
+        }
         
+        
+        $f= array_filter(explode(',', $profile->favorites));
         if(in_array($_POST['id'], $f)){
             $f=  array_diff($f, array($_POST['id']));
             $favorites=(implode(',', $f));

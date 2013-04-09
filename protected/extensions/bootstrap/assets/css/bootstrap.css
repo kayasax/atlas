@@ -6160,7 +6160,7 @@ a.badge:focus {
 /*------------------------------------------------------------------
 [6. Widget / .widget]
 */
-
+/*
 .widget {
 	
 	position: relative;
@@ -6171,7 +6171,7 @@ a.badge:focus {
 	margin-bottom: 2em;
 		
 	overflow: hidden;
-}
+}*/
 	
 .widget-header {
 	
@@ -6227,7 +6227,7 @@ a.badge:focus {
 			margin-right: -2px;
 			
 			font-size: 16px;
-			color: #555;
+			/* color: #555;*/
 			vertical-align: middle;
 			
 			

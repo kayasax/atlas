@@ -16,8 +16,6 @@ $this->menu=array(
 <h3 class='clean'>Liste des espaces</h3>
 
 
-
-
 <?php  $this->renderPartial('_inlineSearch',array(
     'model'=>$model,
 )); ?>
