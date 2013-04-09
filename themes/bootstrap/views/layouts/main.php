@@ -31,7 +31,15 @@
                 array('label'=>'A propos', 'url'=>array('/site/page', 'view'=>'about')),
                 array('label'=>'Contact', 'url'=>array('/site/contact')),
                 array('label'=>'Connexion', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-                array('label'=>'Déconnexion ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
+                array('label'=>(Yii::app()->user->isGuest) ? '' : yii::app()->user->firstname
+					,'url'=>'#'
+					,'visible'=>!Yii::app()->user->isGuest
+					,'items'=>array(
+						array('label'=>'Mon profil', 'url'=>array('/userprofile/view/'.Yii::app()->user->id) ),
+						array('label'=>'Déconnexion', 'url'=>array('/site/logout') ),
+					
+				)
+				),
                 
             ),
         ),

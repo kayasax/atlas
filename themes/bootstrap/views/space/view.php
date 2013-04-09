@@ -20,7 +20,7 @@ if (!yii::app()->user->isGuest) {
 
 
 
-    <span class='pull-right' style='margin-right: 10px'><?php
+    <span class='pull-right' style='margin-right: 10px;color:red'><?php
         echo CHtml::ajaxLink("<i class='" . $icon . "' id='favIcon'></i>", Yii::app()->createUrl("ajax/addToFav"), array(
             'update' => '#favMessage',
             'data' => array('id' => $model->idspace, 'type' => 'space'),
