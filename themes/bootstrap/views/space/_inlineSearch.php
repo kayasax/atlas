@@ -21,10 +21,9 @@ $('.search-form form').submit(function(){
 ");?>
 
 
-
+<div class='box'>
 <?php echo CHtml::link('<i class=icon-search></i> Rechercher','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
-
 <?php /** @var BootActiveForm $form */
 $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'id'=>'inlineForm',
@@ -38,10 +37,8 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 
 <?php //echo $form->passwordFieldRow($model, 'password', array('class'=>'input-small')); ?>
 <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>'Chercher')); ?>
- 
+
 <?php $this->endWidget(); ?>
-
-
-
 </div><!-- search-form -->
 
+</div>

@@ -12,8 +12,10 @@ $this->breadcrumbs=$path;
 	$model->title,
 );*/
 
+Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/toc.js',CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/page.js',CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile("https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js");
+
 
 ?>
 
@@ -21,15 +23,19 @@ Yii::app()->clientScript->registerScriptFile("https://google-code-prettify.googl
     <div class='row'>
 		<div class='span6'><h3><?php echo $model->title; ?></h3><h5><?php echo $model->intro; ?></h5></div>
 		<div class='span2'> 
-                    <?php $favs=explode(',',User::model()->with('userprofile')->findByPk(Yii::app()->user->id)->userprofile->favorites);
-                    if(in_array($model->idpage, $favs)){
-                        $icon='icon-heart';
-                        $title='Cliquer pour supprimer cette page de vos favoris';
-                    }
-                    else{
-                        $icon='icon-heart-empty';
-                        $title='Cliquer pour ajouter cette page à vos favoris';
-                    }
+                    <?php 
+                    if(!yii::app()->user->isGuest){
+                        $favs=explode(',',User::model()->with('userprofile')->findByPk(Yii::app()->user->id)->userprofile->favorites);
+                        if(in_array($model->idpage, $favs)){
+                            $icon='icon-heart';
+                            $title='Cliquer pour supprimer cette page de vos favoris';
+                        }
+                        else{
+                            $icon='icon-heart-empty';
+                            $title='Cliquer pour ajouter cette page à vos favoris';
+                        }
+                    
+                    
                     ?>
                     
                     <p class='pull-right'><?php echo CHtml::ajaxLink("<i class='".$icon."' id='favIcon'></i>", Yii::app()->createUrl("ajax/addToFav"), 
@@ -56,7 +62,8 @@ Yii::app()->clientScript->registerScriptFile("https://google-code-prettify.googl
                         'title'=>$title,
                         'class'=>'',
                         'style'=>'color:red',
-                ));?></p>
+                ));
+                    }?></p>
                     <div id='favMessage'></div>
                     <p class='clearfix'>
 			<ul class='unstyled '>
@@ -83,8 +90,11 @@ Yii::app()->clientScript->registerScriptFile("https://google-code-prettify.googl
 </div>
 
 <div class='widget '>
-	<div class='widget-content'>
-	<?php echo $model->content; ?>
+	<div class='widget-content' >
+            <div id='toc' class='pull-right'></div>
+            <div id='pageContent'>
+                <?php echo $model->content; ?>
+            </div>
 	</div>
 </div>
 

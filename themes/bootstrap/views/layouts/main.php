@@ -5,7 +5,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="fr" />
 
-    
+ <!-- encore un patch pour IE8--> 
+ <script type='javascript' src="<?php echo Yii::app()->baseUrl; ?>/js/css3-mediaqueries.js"></script>
     <link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/favicon.ico" type="image/x-icon" />
 
 

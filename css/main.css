@@ -18,3 +18,53 @@ background-position: 0 0;
 background-repeat: repeat;
 margin-top: 0;
 }
+
+
+#toc {
+   /* top: 0px;
+    left: 0px;
+    height: 100%;
+    position: fixed;*/
+    background: #333;
+    box-shadow: inset -5px 0 5px 0px #000;
+    width: 150px;
+   /*padding-top: 20px;*/
+    color: #fff;
+}
+
+#toc ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#toc li {
+    padding: 5px 10px;
+}
+
+#toc a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+}
+
+#toc li.h3 {
+    padding-left: 10px;
+}
+
+#toc li.h4 {
+    padding-left: 20px;
+}
+
+#toc li.h5 {
+    padding-left: 30px;
+}
+
+#toc li.h6 {
+    padding-left: 40px;
+}
+
+#toc .toc-active {
+    background: #336699;
+    box-shadow: inset -5px 0px 10px -5px #000;
+}

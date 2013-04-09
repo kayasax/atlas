@@ -5,7 +5,7 @@
 
 
 <div class="view well">
-
+      
 	
 	<!-- <?php echo CHtml::encode($data->getAttributeLabel('name')); ?> -->
 	<h2> <?php echo CHtml::link(CHtml::encode($data->name),array('view','id'=>$data->idspace,'nom'=>$data->name)); ?> </h2>

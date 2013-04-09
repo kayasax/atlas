@@ -78,10 +78,34 @@ class AjaxController extends Controller {
     }
 
     public function actionaddToFav(){
+              
         $profile=Userprofile::model()->findByPk(Yii::app()->user->id );
         
-        $f= array_filter(explode(',', $profile->favorites));
+        if($_POST['type']=='space'){
+            $f= array_filter(explode(',', $profile->spacefavs));
+            if(in_array($_POST['id'], $f)){
+                $f = array_diff($f, array($_POST['id']));
+                $favorites = (implode(',', $f));
+                $profile->spacefavs = $favorites;
+                $profile->save();
+                echo'<div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <i class="icon-ok"></i>&nbsp;Supprimée des favoris.
+            </div>';
+            }
+        else{
+           $profile->spacefavs.=",".$_POST['id'];
+           $profile->save();
+           echo'<div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <i class="icon-ok"></i>&nbsp;Ajoutée aux favoris.
+            </div>';
+        }
+        Yii::app()->end();
+        }
         
+        
+        $f= array_filter(explode(',', $profile->favorites));
         if(in_array($_POST['id'], $f)){
             $f=  array_diff($f, array($_POST['id']));
             $favorites=(implode(',', $f));
@@ -113,21 +137,44 @@ class AjaxController extends Controller {
             exit();
         }
         // parse the user input
-        $parentId = "0";
+        $parentId = "1";
         if (isset($_GET['root']) && $_GET['root'] !== 'source') {
             $parentId = (int) $_GET['root'];
         }
         // read the data (this could be in a model)
         $children = Yii::app()->db->createCommand(
-            "SELECT m1.idspace, m1.name AS text, m2.idspace IS NOT NULL AS hasChildren "
+            "SELECT m1.idspace as id, m1.name AS text, m2.idspace IS NOT NULL AS hasChildren "
             . "FROM space AS m1 LEFT JOIN space AS m2 ON m1.idspace=m2.parent "
             . "WHERE m1.parent <=> $parentId "
             . "GROUP BY m1.idspace ORDER BY m1.name ASC"
         )->queryAll();
+        
+        //var_dump($children);
+        
+         $data=$return=array();
+         foreach ($children as $child){
+            $data['id']=$child['id'];
+            $data['text']=$child['text'];
+            $data['hasChildren']=$child['hasChildren'];
+            //$data['text']="<a href='".Yii::app()->createUrl('space/view',array('id'=>$child['id']))." class='treenode'>$child[text]</a>";
+                     
+            $options=array(
+                   'href'=>yii::app()->createUrl('space/view',array('id'=>$child['id'])),'class'=>'treenode-open'
+                   );
+            $nodeText = CHtml::openTag('a', $options);
+            $nodeText.= $child['text'];
+            $nodeText.= CHtml::closeTag('a')."\n";
+            $data['text'] = $nodeText;
+            //$data['expanded']=true;
+            
+            
+            $return[]=$data;
+        }
+        
         echo str_replace(
             '"hasChildren":"0"',
             '"hasChildren":false',
-            CTreeView::saveDataAsJson($children)
+            CTreeView::saveDataAsJson($return)
         );
     }
 }

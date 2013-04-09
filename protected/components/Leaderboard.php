@@ -26,7 +26,7 @@ class Leaderboard extends CPortlet
     	if($this->title!==null)
     	{
     		echo "<div class=\"{$this->decorationCssClass}\">\n";
-    		echo " <h3><i class='icon-star icon-2x'></i>&nbsp; {$this->title}</h3>\n";
+    		echo " <h3><i class='icon-star'></i>&nbsp;{$this->title}</h3>\n";
     		echo "</div>\n";
     	}
     	}
