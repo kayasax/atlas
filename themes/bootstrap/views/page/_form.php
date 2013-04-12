@@ -69,6 +69,7 @@ $this->widget('ext.tinymce.TinyMce', array(
         'theme_advanced_toolbar_align' => 'left',
         'theme_advanced_statusbar_location' => 'bottom',
         'theme_advanced_font_sizes' => "10=10pt,11=11pt,12=12pt,13=13pt,14=14pt,15=15pt,16=16pt",
+        'extended_valid_elements'=> "pre[name|class]",
 
 		// Style formats
 		'style_formats'=>array(

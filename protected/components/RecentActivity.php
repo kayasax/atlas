@@ -21,8 +21,10 @@ class RecentActivity extends CPortlet
 		$dataProvider=new CActiveDataProvider('Activity', array(
 
 				'criteria'=>array(
+                                        'group'=>'url,operation,operator',
 					'order'=>'date DESC',		
 					'with'=>array('operator0','operator0.userprofile'),
+                                        'limit'=>'40'
 				),
 				'pagination'=>array(
 						'pageSize'=>10,

@@ -3,9 +3,9 @@
 /* @var $model Userprofile */
 
 $this->breadcrumbs=array(
-	'Userprofiles'=>array('index'),
-	$model->iduser=>array('view','id'=>$model->iduser),
-	'Update',
+	'Profiles'=>array('index'),
+	$model->firstname." ".$model->lastname=>array('view','id'=>$model->iduser),
+	'Mise à jour',
 );
 
 $this->menu=array(

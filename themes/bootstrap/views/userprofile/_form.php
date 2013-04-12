@@ -6,6 +6,23 @@
 
 
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+	'id'=>'avatar-form',
+	'enableAjaxValidation'=>false,
+	'htmlOptions' => array('enctype' => 'multipart/form-data','class'=>'well'),
+)); ?>
+    <h3> Mon image :</h3>
+    <?php ($model->avatar != '')?$src=$model->avatar:$src='anonymous.png' ?>
+    <?php echo "<img src='".Yii::app()->baseUrl."/images/avatars/".$src."'>";?>
+    <?php echo $form->fileFieldRow($model, 'avatar');?>		
+		
+		<br/>
+<?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'primary','label'=>'Modifier')); ?>
+<?php $this->endWidget(); ?>
+
+
+
+
+<?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 	'id'=>'userprofile-form',
 	'enableAjaxValidation'=>false,
 		'htmlOptions'=>array('class'=>'well'),

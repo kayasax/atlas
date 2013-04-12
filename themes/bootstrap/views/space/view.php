@@ -49,8 +49,8 @@ if (!yii::app()->user->isGuest) {
 </div>
 <div id='favMessage'></div>
     <?php if (isset($index->content)): ?> 
-    <div class='widget widget-content'>
-        <p class='lead'> <?php echo $index->content; ?></p>
+    <div class='widget widget-content lead'>
+        <?php echo $index->content; ?>
     </div>
 <?php endif; ?>
 <div class="row">

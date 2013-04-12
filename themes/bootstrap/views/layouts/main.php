@@ -26,13 +26,14 @@
         array(
             'class'=>'bootstrap.widgets.TbMenu',
             'items'=>array(
-                array('label'=>'Accueil', 'url'=>array('/site/index')),
+                array('label'=>'Accueil', 'url'=>array('/site/index'),'icon'=>'icon-home'),
                 array('label'=>'Espaces','url'=>array('/space') ),
                 array('label'=>'A propos', 'url'=>array('/site/page', 'view'=>'about')),
                 array('label'=>'Contact', 'url'=>array('/site/contact')),
                 array('label'=>'Connexion', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
                 array('label'=>(Yii::app()->user->isGuest) ? '' : yii::app()->user->firstname
 					,'url'=>'#'
+                                        ,'icon'=>'icon-user'
 					,'visible'=>!Yii::app()->user->isGuest
 					,'items'=>array(
 						array('label'=>'Mon profil', 'url'=>array('/userprofile/view/'.Yii::app()->user->id) ),
@@ -43,8 +44,10 @@
                 
             ),
         ),
-        '<form class="navbar-search pull-left" action="'.Yii::app()->createUrl('search/search').'">
-            <input type="text" name="q" id="q" class="search-query span2" placeholder="Chercher"></form>',
+        
+        
+        '<form class="navbar-search pull-right" action="'.Yii::app()->createUrl('search/search').'">
+            <i class="icon-search" style="color:#888"></i>&nbsp;<input type="text" name="q" id="q" class="search-query span2" placeholder="Chercher"></form>',
     ),
 )); ?>
 

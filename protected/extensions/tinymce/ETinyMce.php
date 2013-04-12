@@ -76,7 +76,7 @@ class ETinyMce extends CInputWidget
     *
     * @var string
     */
-   private $width = '90%';
+   private $width = '100%';
 
    /**
     * The heigth of the editor.

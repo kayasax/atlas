@@ -8,5 +8,8 @@ $this->breadcrumbs=array(
 ?>
 
 <?php 
-$this->widget('TreeView');
+$img=new SimpleImage();
+$img->load(Yii::app()->basePath."/../images/avatars/anonymous.png");
+$img->resizeToWidth(40);
+$img->save("images/avatars/mini/anonymous.png");
 ?>
