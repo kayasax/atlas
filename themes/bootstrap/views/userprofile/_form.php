@@ -46,13 +46,13 @@
 		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>100)); ?>
 		<?php echo $form->error($model,'email'); ?>
 	
-		<?php echo $form->labelEx($model,'status'); ?>
+		<?php /*echo $form->labelEx($model,'status'); ?>
 		<?php echo $form->textField($model,'status'); ?>
 		<?php echo $form->error($model,'status'); ?>
 
 		<?php echo $form->labelEx($model,'lastseen'); ?>
 		<?php echo $form->textField($model,'lastseen'); ?>
-		<?php echo $form->error($model,'lastseen'); ?>
+		<?php echo $form->error($model,'lastseen'); */?>
 	<br/>
 		<?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit','type'=>'primary', 'label'=> $model->isNewRecord ? 'Créer' : 'Enregistrer')); ?>
 		

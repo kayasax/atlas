@@ -12,17 +12,20 @@ $this->breadcrumbs=array(
 <h3 class="clean">Profil de <?php echo $model->firstname." ".$model->lastname; ?></h3>
 
 <div class='well'>
+   
+    <span >
+            <img src="<?php echo Yii::app()->baseUrl.'/images/avatars/'.$model->avatar ?>"/>
+    </span>
+    <span class="pull-right ">
+         
+        
+        <dl class="dl-horizontal">
+            <dt>Nom</dt><dd><?php echo $model->lastname?></dd>
+            <dt>Prénom</dt><dd><?php echo $model->firstname?></dd>
+            <dt>Dernière visite </dt><dd><?php echo $model->lastseen?></dd>
+        </dl>
 
-<a href="<?php echo Yii::app()->createUrl('userprofile/update',array('id'=>$model->iduser));?>" class='btn btn-primary pull-right'>Modifier mon profil</a>
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		//'iduser',
-		'lastname',
-		'firstname',
-		'email',
-		'status',
-		'lastseen',
-	),
-)); ?>
+    </span>
+<p class='clearfix'><a href="<?php echo Yii::app()->createUrl('userprofile/update',array('id'=>$model->iduser));?>" class='btn btn-primary pull-right'>Modifier mon profil</a></p>
+   
 </div>

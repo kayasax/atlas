@@ -11,6 +11,7 @@
  * @property integer $status
  * @property string $lastseen
  * @property string $favorites
+ * @property string $avatar
  *
  * The followings are the available model relations:
  * @property User $iduser0
@@ -45,7 +46,7 @@ class Userprofile extends CActiveRecord
 		return array(
 			array('iduser', 'required'),
 			array('iduser, status', 'numerical', 'integerOnly'=>true),
-			array('lastname, firstname, email', 'length', 'max'=>100),
+			array('lastname, firstname, email,avatar', 'length', 'max'=>100),
 			array('lastseen', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -77,7 +78,8 @@ class Userprofile extends CActiveRecord
 			'email' => 'Adresse Email',
 			'status' => 'Statut',
 			'lastseen' => 'Lastseen',
-                        'favorites'=>'Favoris'
+                        'favorites'=>'Favoris',
+                        'avatar'=>'Avatar'
 		);
 	}
 

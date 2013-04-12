@@ -94,7 +94,27 @@ class UserprofileController extends Controller
 		if(isset($_POST['Userprofile']))
 		{
 			$model->attributes=$_POST['Userprofile'];
+                        
+                        $upload=CUploadedFile::getInstance($model,'avatar');
+                        if(isset($upload)){$model->avatar=$upload;}
+                        
 			if($model->save())
+                            if(isset($upload)){
+                                $images_path = realpath(Yii::app()->basePath .'/../images/avatars/' );
+				/*var_dump($images_path);
+                                Yii::app()->end();*/
+                                $upload->saveAs($images_path . '/' . $model->avatar);
+                                
+                                //redimensionnement et creation miniature
+                                $img=new SimpleImage();
+                                $img->load(Yii::app()->basePath."/../images/avatars/".$model->avatar);
+                                $img->resizeToWidth(150);
+                                $img->save(Yii::app()->basePath."/../images/avatars/".$model->avatar);
+                                $img->resizeToWidth(40);
+                                $img->save("images/avatars/mini/".$model->avatar);
+                                
+                            }
+                            
 				$this->redirect(array('view','id'=>$model->iduser));
 		}
 

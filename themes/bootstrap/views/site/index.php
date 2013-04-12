@@ -26,8 +26,12 @@ $this->pageTitle=Yii::app()->name;
 				<p>le wiki et l'espace documentaire dédié au support SMAC</p>
 
 				<div class='row'>
-					<div class='  span5 label label-info pull-right '><h5><em>Mieux vaut savoir tout chercher que chercher à tout savoir...</em></h5></div>
+					<div class='span5  pull-right clearfix '><h5><em>Mieux vaut savoir tout chercher que chercher à tout savoir...</em></h5></div>
 				</div>		
+                                <div class='row'>
+                                    <br/>
+                                    <div class='clearfix pull-right' style='position:relative ; bottom:10'>   <a href="<?php echo Yii::app()->createUrl('site/page',array('view'=>'about'));?>" class='btn btn-large btn-primary'>Découvrir Atlas</a> </div>
+                                </div>
 			</div>
 		</div>
 		
@@ -47,9 +51,9 @@ $this->pageTitle=Yii::app()->name;
         ),*/
     )); 
 ?>
-	<h3 class='clean'>Utilisation</h3>
-	<p>Le site est constitué sous forme de wiki ou chaqun peut (est encouragé même) modifier le contenu des pages et ainsi maintenir une documentation <strong>la plus à jour possible</strong></p>
-	<p><?php echo CHtml::link('Les espaces',CHtml::normalizeUrl(array('space/index'))) ;?> permettent d'orgnaiser le contenu par thème</p>
+	<h4 class='clean'>Utilisation</h4>
+	<p>Le site est constitué sous forme de wiki ou chaqun peut  modifier le contenu des pages et ainsi maintenir une documentation <strong>la plus à jour possible</strong></p>
+	<p><?php echo CHtml::link('Les espaces',CHtml::normalizeUrl(array('space/index'))) ;?> permettent d'orgnaiser le contenu par thème.</p>
 </div>
 </div>
 

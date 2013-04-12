@@ -29,9 +29,9 @@
                 array('label'=>'Accueil', 'url'=>array('/site/index'),'icon'=>'icon-home'),
                 array('label'=>'Espaces','url'=>array('/space') ),
                 array('label'=>'A propos', 'url'=>array('/site/page', 'view'=>'about')),
-                array('label'=>'Contact', 'url'=>array('/site/contact')),
+                //array('label'=>'Contact', 'url'=>array('/site/contact')),
                 array('label'=>'Connexion', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-                array('label'=>(Yii::app()->user->isGuest) ? '' : yii::app()->user->firstname
+                array('label'=>(Yii::app()->user->isGuest) ? '' : (isset(yii::app()->user->firstname))?yii::app()->user->firstname:'utilisateur'
 					,'url'=>'#'
                                         ,'icon'=>'icon-user'
 					,'visible'=>!Yii::app()->user->isGuest

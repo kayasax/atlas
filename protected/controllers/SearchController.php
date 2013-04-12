@@ -42,9 +42,23 @@ class SearchController extends Controller
  
             $index->addDocument($doc);
         }
-        //Yii::app()->end();
+        //Yii::app()->end(); 
+        $files = File::model()->findAll();
+             
+        foreach($files as $file){
+            $doc = new Zend_Search_Lucene_Document();
+            $doc->addField(Zend_Search_Lucene_Field::Keyword('type','file'));
+            $doc->addField(Zend_Search_Lucene_Field::Keyword('_id',$file->page));
+            $doc->addField(Zend_Search_Lucene_Field::Text('title', CHtml::encode($file->filename)));
+            $doc->addField(Zend_Search_Lucene_Field::Text('intro',CHtml::encode($file->filedescription)));   
+            $doc->addField(Zend_Search_Lucene_Field::Text('content',''));
+ 
+ 
+            $index->addDocument($doc);
+        }
+        
         $spaces = Space::model()->findAll();
-        foreach($spaces as $space){
+        foreach($spaces as $space){  
             $doc = new Zend_Search_Lucene_Document();
             $doc->addField(Zend_Search_Lucene_Field::Keyword('type','space'));
             $doc->addField(Zend_Search_Lucene_Field::Keyword('_id',$space->idspace));
@@ -57,7 +71,9 @@ class SearchController extends Controller
         }
         
         $index->commit();
-        echo 'Lucene index created';
+        echo 'index Lucene créé';
+        $index->optimize();
+        echo 'fin optimisation';
     }
  
    public function actionSearch()
@@ -72,7 +88,7 @@ class SearchController extends Controller
         $this->layout='column2';
          if (($term = Yii::app()->getRequest()->getParam('q', null)) !== null) {
             $index = new Zend_Search_Lucene(Yii::getPathOfAlias('application.' . $this->_indexFiles));
-            $results = $index->find($term);
+            (preg_match("/\*/", $term) == 0 )? $results = $index->find($term."~"):$results = $index->find($term); // Make a fuzzysearch if no wildcar
             $query = Zend_Search_Lucene_Search_QueryParser::parse($term);       
             $this->render('search', compact('results', 'term', 'query'));
         }
