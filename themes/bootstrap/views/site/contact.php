@@ -8,6 +8,7 @@ $this->breadcrumbs=array(
 	'Contact',
 );
 ?>
+<?php var_dump(in_array( 404,Yii::app()->params[ 'customErrorPages' ] ) );yii::app()->end();?>
 
 <h1>Contact Us</h1>
 

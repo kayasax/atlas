@@ -81,7 +81,7 @@ class AjaxController extends Controller {
               
         $profile=Userprofile::model()->findByPk(Yii::app()->user->id );
         
-        if($_POST['type']=='space'){
+        if(isset($_POST['type']) && $_POST['type']=='space'){
             $f= array_filter(explode(',', $profile->spacefavs));
             if(in_array($_POST['id'], $f)){
                 $f = array_diff($f, array($_POST['id']));

@@ -30,7 +30,7 @@ $this->pageTitle=Yii::app()->name;
 				</div>		
                                 <div class='row'>
                                     <br/>
-                                    <div class='clearfix pull-right' style='position:relative ; bottom:10'>   <a href="<?php echo Yii::app()->createUrl('site/page',array('view'=>'about'));?>" class='btn btn-large btn-primary'>Découvrir Atlas</a> </div>
+                                    <div class='clearfix pull-right' style='position:relative ; bottom:10'>   <a href="<?php echo Yii::app()->createUrl('site/page',array('view'=>'about'));?>" class='btn btn-large btn-primary'>Découvrir Atlas&nbsp;<i class='icon-circle-arrow-right icon-2x'></i></a> </div>
                                 </div>
 			</div>
 		</div>

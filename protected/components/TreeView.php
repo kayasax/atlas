@@ -22,7 +22,7 @@ class Treeview extends CPortlet
         <?php
         $this->Widget('CTreeView',array(
             'collapsed'=>'true',
-            'url' => array('Ajax/ajaxFillTree'),
+            'url' => array('Ajax/AjaxFillTree'),
             'animated'=>'fast',
             'htmlOptions'=>array('class'=>'treeview-famfamfam')
          )

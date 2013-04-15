@@ -70,7 +70,7 @@ Yii::app()->clientScript->registerScriptFile("https://google-code-prettify.googl
 				<li><small> <i class='icon-user' title='auteur'></i> <?php echo $model->author0->userprofile->firstname;?></small></li>
 				<li><small> <i class='icon-time' title='Créé le'></i>  <?php echo $model->creationdate;?> </small></li>
 				<li><small> <i class='icon-pencil' title='Dernière modification'></i>  <?php echo $model->lasttouched;?> </small></li>
-					<li><small> <?php $this->widget('score',array('id'=>$model->idpage))?> </small></li>
+					<li><small> <?php $this->widget('Score',array('id'=>$model->idpage))?> </small></li>
 			</ul>
                 </p>
 		</div>
