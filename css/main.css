@@ -19,12 +19,33 @@ background-repeat: repeat;
 margin-top: 0;
 }
 
+a[href^="https://"]:after {
+	
+	padding-right: 13px;
+	font-family: FontAwesome;
+	content: " \f08e";
+	font-weight: normal;
+font-style: normal;
+text-decoration: inherit;
+-webkit-font-smoothing: antialiased;
+display: inline;
+width: auto;
+height: auto;
+line-height: normal;
+vertical-align: baseline;
+background-image: none;
+background-position: 0 0;
+background-repeat: repeat;
+margin-top: 0;
+}
+
+
 
 #toc {
-   /* top: 0px;
+    top: 0px;
     left: 0px;
     height: 100%;
-    position: fixed;*/
+    position: fixed;
     background: #333;
     box-shadow: inset -5px 0 5px 0px #000;
     width: 150px;

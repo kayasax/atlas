@@ -7,21 +7,22 @@ Yii::import('zii.widgets.CPortlet');
  
 class TagCloud extends CPortlet
 {
-    public $title='Tags';
     public $maxTags=20;
+   /* public $title='Tags';
+    
     public $htmlOption=array('class'=>'widget');
 
-    public $decorationCssClass='widget-header ';
+    public $decorationCssClass='widget-header ';*/
     /**
      * @var string the CSS class for the portlet title tag. Defaults to 'portlet-title'.
      */
-    public $titleCssClass='h3 ';
+    //public $titleCssClass='h3 ';
     /**
      * @var string the CSS class for the content container tag. Defaults to 'portlet-content'.
      */
-    public $contentCssClass='widget-content well';
+    //public $contentCssClass='widget-content well';
  
-    protected function renderDecoration()
+  /*  protected function renderDecoration()
     {
     	if($this->title!==null)
     	{
@@ -30,9 +31,14 @@ class TagCloud extends CPortlet
     		echo "</div>\n";
     	}
     	}
-    	
+    */	
     protected function renderContent()
     { 
+        ?>
+    <div class='widget'>
+        <div class='widget-header'><h3><i class='icon-tags icon-2x'></i>&nbsp;Tags</h3></div>
+        <div class='widget-content'>
+        <?php
         $tags=Tag::model()->findTagWeights($this->maxTags);
  
         foreach($tags as $tag=>$weight)
@@ -41,8 +47,12 @@ class TagCloud extends CPortlet
             echo CHtml::tag('span', array(
                 'class'=>'btn btn-mini',
                 'style'=>"font-size:{$weight}pt ; margin:2px",
-            ), $link)."\n";
+            ), $link)."\n\t\t";
         }
+        ?>
+</div> <!-- /widget-content-->
+    </div><!-- /widget-->
+    <?php
     }
 }
 ?>

@@ -9,12 +9,13 @@ class Favorites extends CPortlet
 {
     	
     protected function renderContent()
-    {?><div class='widget'>
+    {?>
+        <div class='widget'>
             <div class='widget-header'> <h3><i class='icon-heart'></i>&nbsp;  Mes favoris </h3></div>
             <div class='widget-content'>
             <?php
             if( Yii::app()->user->isGuest){
-                echo "Vous devez être connecté pour afficher vos favoris";
+                echo "<span class='alert alert-error'><i class='icon-warning-sign'></i>&nbsp; Vous devez être <a href='".yii::app()->createUrl('site/login')."'>connecté </a>pour afficher vos favoris</span>\n";
             }
             else{
                 $favs=  Userprofile::model()->findByPk(Yii::app()->user->id);
@@ -43,12 +44,11 @@ class Favorites extends CPortlet
                     }
                     echo '</ul>';
                 }
-                ;?>
-                
-            </div>
-        </div>
+        }
+        ?>
+            </div> <!-- /widget content-->
+        </div><!-- /widget-->
 <?php
-    }
     }   
 }
 ?>

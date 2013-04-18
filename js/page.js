@@ -10,9 +10,9 @@ $("#toc").toc({
     'container': '#pageContent', //element to find all selectors in
     'smoothScrolling': true, //enable or disable smooth scrolling on click
     'prefix': 'toc', //prefix for anchor tags and class names
-    'onHighlight': function(el) {}, //called when a new section is highlighted 
+    'onHighlight': function(el) { }, //called when a new section is highlighted 
     'highlightOnScroll': true, //add class to heading that is currently in focus
-    'highlightOffset': 100, //offset to trigger the next headline
+    'highlightOffset': 70, //offset to trigger the next headline
     'anchorName': function(i, heading, prefix) { //custom function for anchor name
         return prefix+i;
     },

@@ -7,11 +7,11 @@ Yii::import('zii.widgets.CPortlet');
  
 class Leaderboard extends CPortlet
 {
-    public $title='Les mieux notés';
+    /*public $title='Les mieux notés';
     public $maxTags=20;
-    public $htmlOption=array('class'=>'widget');
+    public $htmlOption=array('class'=>'widget');*/
 
-    public $decorationCssClass='widget-header ';
+    //public $decorationCssClass='widget-header ';
     /**
      * @var string the CSS class for the portlet title tag. Defaults to 'portlet-title'.
      */
@@ -19,17 +19,12 @@ class Leaderboard extends CPortlet
     /**
      * @var string the CSS class for the content container tag. Defaults to 'portlet-content'.
      */
-    public $contentCssClass='widget-content well';
+    //public $contentCssClass='widget-content well';
  
     protected function renderDecoration()
     {
-    	if($this->title!==null)
-    	{
-    		echo "<div class=\"{$this->decorationCssClass}\">\n";
-    		echo " <h3><i class='icon-star'></i>&nbsp;{$this->title}</h3>\n";
-    		echo "</div>\n";
-    	}
-    	}
+    
+    }
     	
     protected function renderContent()
     { 
@@ -42,8 +37,12 @@ class Leaderboard extends CPortlet
         ->limit(10)
                
         ->queryAll();
-
-        echo"<table class='table table-condensed table-bordered table-striped'>
+?>
+        <div class="widget">
+            <div class='widget-header'><h3><i class='icon-star'></i>&nbsp;Les mieux notés</h3></div>
+            <div class='widget-content'>
+       
+        <table class='table table-condensed table-bordered table-striped'>
             
             <thead>
             <tr>
@@ -51,15 +50,19 @@ class Leaderboard extends CPortlet
                 <th>Vote</th>
             </tr>
             </thead>
-            <tbody>";
+            <tbody>
+        <?php
         foreach ($pages as $page) {
             echo "<tr>
             <td>".CHtml::link($page['title']." {".$page['name']."}",Yii::app()->createUrl('page/view', array('id'=>$page['page'])))."</td>
             <td>$page[total]</td>
             </tr>";
-        }
-  echo"</tbody>
-</table>";
+        }?>
+            </tbody>
+        </table>
+            </div> <!-- /widget-content-->
+        </div> <!-- /widget-->    
+    <?php
     }
 }
 ?>

@@ -1,5 +1,4 @@
 <?php
-
 class SearchController extends Controller
 {
 	 /**
@@ -22,23 +21,21 @@ class SearchController extends Controller
      */
     public function actionCreate()
     {
-        setlocale(LC_ALL, 'fr_FR.iso-8859-1');
+        //setlocale(LC_ALL, 'fr_FR.utf-8');
         Zend_Search_Lucene_Analysis_Analyzer::setDefault(new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive());
-        
-         $index = new Zend_Search_Lucene(Yii::getPathOfAlias('application.' . $this->_indexFiles), true);
+                
+        $index = new Zend_Search_Lucene(Yii::getPathOfAlias('application.' . $this->_indexFiles), true);
  
         $pages = Page::model()->with('space0')->findAll();
         foreach($pages as $page){
-            
-            //var_dump($page->title);
+            var_dump(utf8_decode($page->title));
             
             $doc = new Zend_Search_Lucene_Document();
             $doc->addField(Zend_Search_Lucene_Field::Keyword('type','page'));
             $doc->addField(Zend_Search_Lucene_Field::Keyword('_id',$page->idpage));
-            $doc->addField(Zend_Search_Lucene_Field::Text('title', $page->title."&nbsp;{ <i class='icon-folder-open-alt'></i>&nbsp;".$page->space0->name." }","iso-8859-1"));
-            $doc->addField(Zend_Search_Lucene_Field::Text('intro',$page->intro));   
-            $doc->addField(Zend_Search_Lucene_Field::Text('content',CHtml::decode($page->content)));
- 
+            $doc->addField(Zend_Search_Lucene_Field::Text('title', utf8_decode($page->title)."&nbsp;{ <i class='icon-folder-open-alt'></i>&nbsp;".utf8_decode($page->space0->name)." }"));
+            $doc->addField(Zend_Search_Lucene_Field::Text('intro',utf8_decode($page->intro)));   
+            $doc->addField(Zend_Search_Lucene_Field::Text('content',$page->content));
  
             $index->addDocument($doc);
         }
@@ -79,7 +76,7 @@ class SearchController extends Controller
    public function actionSearch()
     {
        Zend_Search_Lucene::setDefaultSearchField(null);
-       setlocale(LC_ALL, 'fr_FR.iso-8859-1');
+       //setlocale(LC_ALL, 'fr_FR.utf-8');
        Zend_Search_Lucene_Analysis_Analyzer::setDefault(new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive());
     
        //Zend_Search_Lucene_Search_QueryParser::setDefaultEncoding('utf-8');
@@ -88,7 +85,7 @@ class SearchController extends Controller
         $this->layout='column2';
          if (($term = Yii::app()->getRequest()->getParam('q', null)) !== null) {
             $index = new Zend_Search_Lucene(Yii::getPathOfAlias('application.' . $this->_indexFiles));
-            (preg_match("/\*/", $term) == 0 )? $results = $index->find($term."~"):$results = $index->find($term); // Make a fuzzysearch if no wildcar
+            (preg_match("/\*/", $term) == 0 )? $results = $index->find(utf8_decode($term)."~"):$results = $index->find(utf8_decode($term)); // Make a fuzzysearch if no wildcar
             $query = Zend_Search_Lucene_Search_QueryParser::parse($term);       
             $this->render('search', compact('results', 'term', 'query'));
         }

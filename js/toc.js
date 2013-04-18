@@ -14,9 +14,11 @@ $.fn.toc = function(options) {
       var elScrollTo = $(e.target).attr('href');
       var $el = $(elScrollTo);
 
-      $('body,html').animate({ scrollTop: $el.offset().top }, 400, 'swing', function() {
+      $('body,html').animate({ scrollTop: $el.offset().top-30 }, 400, 'swing', function() {
         location.hash = elScrollTo;
+        
       });
+      $el.effect("highlight",2500);
     }
     $('li', self).removeClass(activeClassName);
     $(e.target).parent().addClass(activeClassName);
@@ -55,8 +57,8 @@ $.fn.toc = function(options) {
       headingOffsets.push($h.offset().top - opts.highlightOffset);
 
       //add anchor
-      var anchor = $('<span/>').attr('id', opts.anchorName(i, heading, opts.prefix)).insertBefore($h);
-
+      //var anchor = $('<span/>').attr('id', opts.anchorName(i, heading, opts.prefix)).insertBefore($h);
+      var anchor = $h.wrap("<div id="+opts.anchorName(i, heading, opts.prefix)+"></div>");
       //build TOC item
       var a = $('<a/>')
         .text(opts.headerText(i, heading, $h))
@@ -85,7 +87,7 @@ jQuery.fn.toc.defaults = {
   prefix: 'toc',
   onHighlight: function() {},
   highlightOnScroll: true,
-  highlightOffset: 100,
+  highlightOffset: 150,
   anchorName: function(i, heading, prefix) {
     return prefix+i;
   },

@@ -2,14 +2,10 @@
 /**
 * portet Nuage de tags
 */
-
 Yii::import('zii.widgets.CPortlet');
  
 class Treeview extends CPortlet
 {
-   
- 
-    	
     protected function renderContent()
     { 
         ?>
@@ -28,7 +24,12 @@ class Treeview extends CPortlet
          )
     
         );
-        echo '</div></div>';
+        ?>
+        
+            </div> <!--widget content-->
+        </div> <!--widget -->
+
+    <?php 
     }
 }
 ?>

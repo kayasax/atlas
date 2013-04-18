@@ -18,12 +18,12 @@ $this->breadcrumbs=array(
             <?php if($result->type == 'file'): ?>
                 <?php echo '<a href="'.Yii::app()->baseUrl.'/files/'.$result->_id.'/'.$result->title.'" <i class="'.$icons[$result->type].'"></i>'.$query->highlightMatches($result->title).'</a>';?>
             <?php else:?>
-                <?php echo CHtml::link('<i class="'.$icons[$result->type].'"></i>'.$query->highlightMatches($result->title),
+                <?php echo CHtml::link('<i class="'.$icons[$result->type].'"></i>'.$query->highlightMatches(utf8_decode($result->title)),
                         Yii::app()->createUrl("$result->type/view",array('id'=>$result->_id))); ?>
             <?php endif;?>
             <?php echo "(". round($result->score*100) ."%)"?>
         </p>
-        <h5> <?php echo $query->highlightMatches($result->intro); ?></h5>
+        <h5> <?php echo $query->highlightMatches(utf8_decode($result->intro)); ?></h5>
         <small><?php echo $query->highlightMatches($result->content); ?></small>                 
     </div>           
 <?php endforeach; ?>
