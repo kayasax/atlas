@@ -7,12 +7,11 @@
 
  <!-- encore un patch pour IE8--> 
  <script type='javascript' src="<?php echo Yii::app()->baseUrl; ?>/js/css3-mediaqueries.js"></script>
-    <link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/favicon.ico" type="image/x-icon" />
+ <link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/favicon.ico" type="image/x-icon" />
 
+<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 
-	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
-
-	<?php Yii::app()->bootstrap->register(); ?>
+<?php Yii::app()->bootstrap->register(); ?>
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/styles.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->baseUrl; ?>/css/font-awesome.min.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->baseUrl; ?>/css/main.css" />
@@ -73,6 +72,13 @@
 	</div><!-- footer -->
 
 </div><!-- page -->
+
+<?php
+yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl."/js/timeago.js");
+yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl."/js/atlas.js");
+
+?>
+
 
 </body>
 </html>

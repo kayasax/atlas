@@ -176,5 +176,6 @@ class AjaxController extends Controller {
             '"hasChildren":false',
             CTreeView::saveDataAsJson($return)
         );
+        Yii::app()->end();
     }
 }

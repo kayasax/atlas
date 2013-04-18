@@ -20,4 +20,20 @@ class Controller extends CController
 	 * for more details on how to specify this property.
 	 */
 	public $breadcrumbs=array();
+        
+    /**
+     * 
+     * Update user lastseen after each action successfully ran
+     */    
+    protected function afterAction($action)
+    {
+        if($action != "logout"){
+            $p=User::model()->with('userprofile')->findByPk(yii::app()->user->id);
+            $p->userprofile->lastseen= new CDbExpression('NOW()');
+            //Yii::trace(" **************    ".$p->userprofile->firstname." last seen on : ".new CDbExpression('NOW()')." **********");
+            $p->userprofile->save();
+            //return true;
+        }
+        
+    }
 }

@@ -9,6 +9,8 @@ $this->breadcrumbs=array(
 
 ?>
 
+
+
 <h3 class="clean">Profil de <?php echo $model->firstname." ".$model->lastname; ?></h3>
 
 <div class='well'>
@@ -22,7 +24,7 @@ $this->breadcrumbs=array(
         <dl class="dl-horizontal">
             <dt>Nom</dt><dd><?php echo $model->lastname?></dd>
             <dt>Prénom</dt><dd><?php echo $model->firstname?></dd>
-            <dt>Dernière visite </dt><dd><?php echo $model->lastseen?></dd>
+            <dt>Dernière visite </dt><dd> <abbr title="<?php echo $model->lastseen?>" class='timeago'></abbr></dd>
         </dl>
 
     </span>

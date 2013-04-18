@@ -1,1 +1,1 @@
-        <li><small class="muted"><?php echo $data['date']."</small> ".Helper::getProfileLink($data['operator'])." a ".$data['operation']." ".$data['type']." ".$data['url'];?></li>
+<li><?php echo Helper::getProfileLink($data['operator'])." a ".$data['operation']." ".$data['type']." ".$data['url'];?> <abbr class='timeago' title="<?php echo $data['date']?>"><?php echo $data['date']?></abbr></li>
